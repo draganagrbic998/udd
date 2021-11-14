@@ -1,10 +1,10 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,25 +22,25 @@ public class Application {
 
 	// not blank validation
 
-	@NotNull
+	@Column
 	private String firstName;
 
-	@NotNull
+	@Column
 	private String lastName;
 
-	@NotNull
+	@Column
 	private String email;
 
-	@NotNull
+	@Column
 	private String address;
 
-	@NotNull
+	@Column
 	private String education;
 
-	@NotNull
+	@Column
 	private String cvLocation;
 
-	@NotNull
+	@Column
 	private String letterLocation;
 
 }

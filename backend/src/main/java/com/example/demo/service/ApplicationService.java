@@ -38,7 +38,7 @@ public class ApplicationService {
 		// is the trim() necesary?
 		// fileName when storing should be id (timestamp or something like that)
 
-		indexRepo.index(indexUnit);
+		indexRepo.save(indexUnit);
 		return repo.save(model);
 	}
 
