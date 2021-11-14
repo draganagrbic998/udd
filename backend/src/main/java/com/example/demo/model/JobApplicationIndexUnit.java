@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Document(indexName = "digital_library", type = "job_application", shards = 1, replicas = 0)
+@Document(indexName = "index", type = "jobapplication", shards = 1, replicas = 0)
 public class JobApplicationIndexUnit {
 
 	@Field(type = FieldType.String, index = FieldIndex.analyzed, store = true)
@@ -26,16 +26,10 @@ public class JobApplicationIndexUnit {
 	private String education;
 
 	@Field(type = FieldType.String, index = FieldIndex.analyzed, store = true)
-	private String cvText;
-
-	@Field(type = FieldType.String, index = FieldIndex.analyzed, store = true)
 	private String letterText;
 
 	@Id
 	@Field(type = FieldType.String, index = FieldIndex.not_analyzed, store = true)
 	private String cvLocation;
-
-	@Field(type = FieldType.String, index = FieldIndex.not_analyzed, store = true)
-	private String letterLocation;
 
 }

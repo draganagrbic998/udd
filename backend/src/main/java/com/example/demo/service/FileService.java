@@ -15,8 +15,7 @@ public class FileService {
 	private static final String RESOURCES_PATH = "src/main/resources/pdf";
 
 	public String store(MultipartFile file) throws IOException {
-		String fileLocation = RESOURCES_PATH + File.separatorChar + file.getOriginalFilename() + "_"
-				+ new Date().getTime() + ".pdf";
+		String fileLocation = RESOURCES_PATH + "/" + file.getOriginalFilename() + "_" + new Date().getTime() + ".pdf";
 		FileOutputStream fout = new FileOutputStream(new File(fileLocation));
 		fout.write(file.getBytes());
 		fout.close();

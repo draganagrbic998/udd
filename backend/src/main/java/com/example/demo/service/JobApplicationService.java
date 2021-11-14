@@ -10,6 +10,7 @@ import com.example.demo.model.JobApplication;
 import com.example.demo.model.JobApplicationIndexUnit;
 import com.example.demo.repository.JobApplicationIndexRepository;
 import com.example.demo.repository.JobApplicationRepository;
+import com.example.demo.utils.PDFHandler;
 
 import lombok.AllArgsConstructor;
 
@@ -33,7 +34,8 @@ public class JobApplicationService {
 		model.setLetterLocation(letterLocation);
 
 		indexUnit.setCvLocation(cvLocation); // is this needed?
-		indexUnit.setLetterLocation(letterLocation); // is this needed?
+		indexUnit.setLetterText(PDFHandler.parse(letterLocation).trim());
+		// is the trim() necesary?
 		// fileName when storing should be id (timestamp or something like that)
 
 		indexRepo.index(indexUnit);
