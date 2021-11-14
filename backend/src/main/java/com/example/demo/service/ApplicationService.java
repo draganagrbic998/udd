@@ -4,28 +4,28 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.JobApplicationUpload;
-import com.example.demo.mapper.JobApplicationMapper;
-import com.example.demo.model.JobApplication;
-import com.example.demo.model.JobApplicationIndexUnit;
-import com.example.demo.repository.JobApplicationIndexRepository;
-import com.example.demo.repository.JobApplicationRepository;
+import com.example.demo.dto.ApplicationUpload;
+import com.example.demo.mapper.ApplicationMapper;
+import com.example.demo.model.Application;
+import com.example.demo.model.ApplicationIndexUnit;
+import com.example.demo.repository.ApplicationIndexRepository;
+import com.example.demo.repository.ApplicationRepository;
 import com.example.demo.utils.PDFHandler;
 
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class JobApplicationService {
+public class ApplicationService {
 
-	private final JobApplicationMapper mapper;
-	private final JobApplicationRepository repo;
-	private final JobApplicationIndexRepository indexRepo;
+	private final ApplicationMapper mapper;
+	private final ApplicationRepository repo;
+	private final ApplicationIndexRepository indexRepo;
 	private final FileService fileService;
 
-	public JobApplication create(JobApplicationUpload upload) throws IOException {
-		JobApplication model = mapper.map(upload);
-		JobApplicationIndexUnit indexUnit = mapper.mapToIndexUnit(upload);
+	public Application create(ApplicationUpload upload) throws IOException {
+		Application model = mapper.map(upload);
+		ApplicationIndexUnit indexUnit = mapper.mapToIndexUnit(upload);
 
 		String cvLocation = fileService.store(upload.getCvFile());
 		String letterLocation = fileService.store(upload.getLetterFile());

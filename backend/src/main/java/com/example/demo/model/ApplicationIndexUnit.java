@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Document(indexName = "index", type = "jobapplication", shards = 1, replicas = 0)
-public class JobApplicationIndexUnit {
+public class ApplicationIndexUnit {
 
 	@Field(type = FieldType.String, index = FieldIndex.analyzed, store = true)
 	private String firstName;

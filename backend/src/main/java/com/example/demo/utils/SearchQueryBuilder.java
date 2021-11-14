@@ -1,4 +1,4 @@
-package com.example.demo.model.index;
+package com.example.demo.utils;
 
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;

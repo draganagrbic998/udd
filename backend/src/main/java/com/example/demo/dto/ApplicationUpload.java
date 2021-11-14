@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class JobApplicationUpload {
+public class ApplicationUpload {
 
 	private String firstName;
 	private String lastName;

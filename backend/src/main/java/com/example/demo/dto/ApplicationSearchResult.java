@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.JobApplicationIndexUnit;
+import com.example.demo.model.ApplicationIndexUnit;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class JobApplicationSearchResult {
+public class ApplicationSearchResult {
 
 	private String firstName;
 	private String lastName;
@@ -17,7 +17,7 @@ public class JobApplicationSearchResult {
 	private String cvLocation;
 	private String hightlight;
 
-	public JobApplicationSearchResult(JobApplicationIndexUnit indexUnit) {
+	public ApplicationSearchResult(ApplicationIndexUnit indexUnit) {
 		firstName = indexUnit.getFirstName();
 		lastName = indexUnit.getLastName();
 		education = indexUnit.getEducation();
