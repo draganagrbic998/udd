@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,16 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.ApplicationSearchResult;
 import com.example.demo.dto.ApplicationUpload;
 import com.example.demo.model.Application;
+import com.example.demo.service.ApplicationSearchService;
 import com.example.demo.service.ApplicationService;
 import com.example.demo.utils.SearchQuery;
 import com.example.demo.utils.SearchQueryBuilder;
-import com.example.demo.service.ApplicationSearchService;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/job_applications")
+@PreAuthorize("isAuthenticated()")
 public class ApplicationController {
 
 	private final ApplicationService service;
