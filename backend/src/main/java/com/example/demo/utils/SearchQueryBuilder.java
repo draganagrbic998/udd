@@ -7,21 +7,15 @@ import org.elasticsearch.index.query.QueryBuilders;
 public class SearchQueryBuilder {
 
 	public static QueryBuilder buildQuery(SearchQuery searchQuery) {
-		QueryBuilder query1 = searchQuery.getQuery1().isPhrase()
-				? QueryBuilders.matchPhraseQuery(searchQuery.getQuery1().getField(),
-						searchQuery.getQuery1().getValue().toLowerCase())
-				: QueryBuilders.termQuery(searchQuery.getQuery1().getField(),
-						searchQuery.getQuery1().getValue().toLowerCase());
+		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery1().getField(),
+				searchQuery.getQuery1().getValue().toLowerCase());
 
 		if (searchQuery.getOperation() == null || searchQuery.getQuery2() == null) {
 			return query1;
 		}
 
-		QueryBuilder query2 = searchQuery.getQuery2().isPhrase()
-				? QueryBuilders.matchPhraseQuery(searchQuery.getQuery2().getField(),
-						searchQuery.getQuery2().getValue().toLowerCase())
-				: QueryBuilders.termQuery(searchQuery.getQuery2().getField(),
-						searchQuery.getQuery2().getValue().toLowerCase());
+		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery2().getField(),
+				searchQuery.getQuery2().getValue().toLowerCase());
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 		if (searchQuery.getOperation().equalsIgnoreCase("and")) {
 			boolQuery.must(query1);

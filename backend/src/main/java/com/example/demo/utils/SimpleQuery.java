@@ -11,6 +11,5 @@ public class SimpleQuery {
 
 	private String field;
 	private String value;
-	private boolean phrase;
 
 }
