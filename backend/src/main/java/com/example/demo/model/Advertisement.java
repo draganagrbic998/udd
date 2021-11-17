@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,37 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Application {
+public class Advertisement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn
-	private Advertisement advertisement;
-
 	// not blank validation
 
 	@Column
-	private String firstName;
+	private String title;
 
 	@Column
-	private String lastName;
-
-	@Column
-	private String email;
-
-	@Column
-	private String address;
-
-	@Column
-	private String education;
-
-	@Column
-	private String cvLocation;
-
-	@Column
-	private String letterLocation;
+	private String description;
 
 }

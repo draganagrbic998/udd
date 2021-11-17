@@ -8,14 +8,14 @@ public class SearchQueryBuilder {
 
 	public static QueryBuilder buildQuery(SearchQuery searchQuery) {
 		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery1().getField(),
-				searchQuery.getQuery1().getValue().toLowerCase());
+				searchQuery.getQuery1().getValue());
 
 		if (searchQuery.getOperation() == null || searchQuery.getQuery2() == null) {
 			return query1;
 		}
 
 		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery2().getField(),
-				searchQuery.getQuery2().getValue().toLowerCase());
+				searchQuery.getQuery2().getValue());
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 		if (searchQuery.getOperation().equalsIgnoreCase("and")) {
 			boolQuery.must(query1);

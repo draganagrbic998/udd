@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 public class ApplicationUpload {
 
+	private Long advertisementId;
 	private String firstName;
 	private String lastName;
 	private String email;

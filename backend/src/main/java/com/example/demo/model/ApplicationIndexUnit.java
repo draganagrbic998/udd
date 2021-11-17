@@ -33,4 +33,7 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String cvLocation;
 
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String adTitle;
+
 }
