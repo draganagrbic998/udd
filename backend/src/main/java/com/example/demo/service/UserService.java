@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Role;
+import com.example.demo.dto.Auth;
 import com.example.demo.model.User;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
@@ -31,15 +31,16 @@ public class UserService implements UserDetailsService {
 		return repo.findByEmail(email);
 	}
 
-	public String login(String email, String password) {
-		authManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-		return tokenUtils.generateToken(email);
+	public Auth login(Auth auth) {
+		return new Auth((User) authManager
+				.authenticate(new UsernamePasswordAuthenticationToken(auth.getEmail(), auth.getPassword()))
+				.getPrincipal(), tokenUtils.generateToken(auth.getEmail()));
 	}
 
-	public User register(String email, String password) {
-		Role role = roleRepo.findByName("kandidat");
-		User user = new User(email, passEncoder.encode(password), role);
-		return repo.save(user);
+	public Auth register(Auth auth) {
+		return new Auth(repo.save(
+				new User(auth.getEmail(), passEncoder.encode(auth.getPassword()), roleRepo.findByName("kandidat"))),
+				tokenUtils.generateToken(auth.getEmail()));
 	}
 
 }
