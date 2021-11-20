@@ -17,8 +17,7 @@ export class ApplicationService {
   upload(upload: ApplicationUpload) {
     const data = new FormData();
     for (const field in upload) {
-      const type = typeof upload[field]
-      data.append(field, type !== 'number' ? upload[field] : upload[field] + '');
+      data.append(field, typeof upload[field] !== 'number' ? upload[field] : upload[field] + '');
     }
     return this.http.post<Application>(this.APPLICATIONS_API, data);
   }

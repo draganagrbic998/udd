@@ -51,6 +51,10 @@ export class FormComponent implements OnInit {
     this.submit.emit(this.form.value);
   }
 
+  updateFile(control: string, file: Blob) {
+    this.form.get(control).setValue(file);
+  }
+
   ngOnInit() {
     this.form = this.formService.build(this.config);
   }

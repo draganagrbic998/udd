@@ -9,12 +9,13 @@ import { RegistrationComponent } from './components/auth/registration/registrati
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToolbarComponent } from './components/utils/toolbar/toolbar.component';
 import { AdvertisementsComponent } from './components/application/advertisements/advertisements.component';
 import { ApplicationUploadComponent } from './components/application/application-upload/application-upload.component';
 import { ApplicationSearchComponent } from './components/application/application-search/application-search.component';
 import { FormComponent } from './components/utils/form/form.component';
+import { AuthInterceptor } from './utils/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { FormComponent } from './components/utils/form/form.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

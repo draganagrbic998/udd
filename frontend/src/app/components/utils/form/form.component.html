@@ -14,7 +14,8 @@
                     </mat-form-field>
                     <ng-container *ngFor="let control of fileControls">
                         <div class="file-input">
-                            <input #fileInput type="file" accept="application/pdf" [formControlName]="control">
+                            <input #fileInput type="file" accept="application/pdf"
+                                (change)="updateFile(control, fileInput.files[0]); fileInput.value=null">
                             <button mat-raised-button color="accent" (click)="fileInput.click()">Upload</button>
                             <span class="file-status">
                                 {{fileStatus(control)}}
