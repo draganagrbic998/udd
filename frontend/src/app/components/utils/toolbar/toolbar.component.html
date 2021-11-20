@@ -1,7 +1,13 @@
 <mat-toolbar color="primary" class="mat-elevation-z24">
     <span></span>
     <span>
-        <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="More">
+        <button *ngIf="login" mat-button routerLink="/registration">
+            <mat-icon>person_add</mat-icon>Registration
+        </button>
+        <button *ngIf="registration" mat-button routerLink="/login">
+            <mat-icon>login</mat-icon>Login
+        </button>
+        <button *ngIf="!login && !registration" mat-icon-button [matMenuTriggerFor]="more" matTooltip="More">
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #more="matMenu">

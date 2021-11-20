@@ -15,8 +15,12 @@ export class ToolbarComponent {
     private router: Router
   ) { }
 
-  get auth() {
-    return this.router.url.includes(Routes.LOGIN) || this.router.url.includes(Routes.REGISTRATION)
+  get login() {
+    return this.router.url.includes(Routes.LOGIN);
+  }
+
+  get registration() {
+    return this.router.url.includes(Routes.REGISTRATION);
   }
 
   logout() {
