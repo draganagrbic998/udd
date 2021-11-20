@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { FormConfig } from '../utils/form-config';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class FormService {
     private builder: FormBuilder
   ) { }
 
-  build(config: { [control: string]: { validation: 'none' | 'required' } }) {
+  build(config: FormConfig) {
     const data = {}
     for (const control in config) {
       data[control] = ['', this.buildValidation(config[control].validation)]

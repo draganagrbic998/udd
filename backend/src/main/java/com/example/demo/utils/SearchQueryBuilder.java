@@ -4,9 +4,11 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
+import com.example.demo.dto.ApplicationSearch;
+
 public class SearchQueryBuilder {
 
-	public static QueryBuilder buildQuery(SearchQuery searchQuery) {
+	public static QueryBuilder buildQuery(ApplicationSearch searchQuery) {
 		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery1().getField(),
 				searchQuery.getQuery1().getValue());
 

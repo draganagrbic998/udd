@@ -22,3 +22,24 @@ export interface Application {
     cvLocation: string;
     letterLocation: string;
 }
+
+export interface ApplicationSearch {
+    query1: SimpleQuery,
+    operation?: 'and' | 'or' | 'not',
+    query2?: SimpleQuery,
+}
+
+export interface ApplicationSearchResult {
+    firstName: string;
+    lastName: string;
+    education: string;
+    letterText: string;
+    adTitle: string;
+    cvLocation: string;
+    letterLocation: string;
+}
+
+interface SimpleQuery {
+    field: 'firstName' | 'lastName' | 'education' | 'letterText',
+    value: string
+}

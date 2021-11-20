@@ -29,11 +29,14 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = true, store = true)
 	private String letterText;
 
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String adTitle;
+
 	@Id
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String cvLocation;
 
 	@Field(type = FieldType.Text, index = false, store = true)
-	private String adTitle;
+	private String letterLocation;
 
 }

@@ -1,1 +1,50 @@
-<p>application-search works!</p>
+<div class="root">
+    <div class="search-form">
+        <mat-card class="mat-elevation-z24">
+            <mat-card-content>
+                <h1>Search form</h1>
+                <app-query-search #query1></app-query-search>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <span class="second-title">Add second operation</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-query-search #query2 [second]="true"></app-query-search>
+                </mat-expansion-panel>
+                <div class="search-button">
+                    <span></span>
+                    <span>
+                        <button *ngIf="!pending" mat-raised-button color="primary" (click)="search()">Search</button>
+                        <app-spinner *ngIf="pending"></app-spinner>
+                    </span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="search-results">
+        <div *ngFor="let result of searchResults" class="search-result mat-elevation-z24">
+            <mat-card>
+                <mat-card-content>
+                    <div class="title">
+                        <span>{{result.adTitle}}</span>
+                    </div>
+                    <div class="description">
+                        <b>First name:</b> {{result.firstName}}<br />
+                        <b>Last name:</b> {{result.lastName}}<br />
+                        <b>Education:</b> {{result.education}}<br />
+                        <div class="download">
+                            <span></span>
+                            <span>
+                                <a routerLink="./" (click)="downloadFile(true, result.cvLocation)">Download CV</a>
+                                <a routerLink="./" (click)="downloadFile(false, result.letterLocation)">Download
+                                    Letter</a>
+                            </span>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -34,6 +34,7 @@ public class ApplicationService {
 		model.setLetterLocation(letterLocation);
 
 		indexUnit.setCvLocation(cvLocation); // is this needed?
+		indexUnit.setLetterLocation(letterLocation);
 		indexUnit.setLetterText(PDFHandler.parse(letterLocation).trim());
 		// is the trim() necesary?
 		// fileName when storing should be id (timestamp or something like that)
