@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,5 +29,11 @@ public class Advertisement {
 
 	@Column
 	private String description;
+
+	@Column
+	private Date published;
+
+	@Column
+	private Date deadline;
 
 }

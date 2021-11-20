@@ -22,14 +22,14 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/job_applications")
-@PreAuthorize("isAuthenticated()")
+@RequestMapping("/applications")
 public class ApplicationController {
 
 	private final ApplicationService service;
 	private final ApplicationSearchService searchService;
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('kandidat')")
 	public ResponseEntity<Application> create(@ModelAttribute ApplicationUpload upload) {
 		try {
 			return ResponseEntity.ok(service.create(upload));
@@ -39,6 +39,7 @@ public class ApplicationController {
 	}
 
 	@PostMapping(path = "/search", consumes = "application/json")
+	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody SearchQuery searchQuery) {
 		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(searchQuery)));
 	}
