@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="mat-elevation-z24">
+    <span></span>
+    <span>
+        <button mat-icon-button [matMenuTriggerFor]="more" matTooltip="More">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #more="matMenu">
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Log out</span>
+            </button>
+        </mat-menu>
+    </span>
+</mat-toolbar>
