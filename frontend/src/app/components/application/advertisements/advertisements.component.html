@@ -1,0 +1,19 @@
+<div *ngFor="let advertisement of advertisements" class="root mat-elevation-z24">
+    <mat-card>
+        <mat-card-content>
+            <div class="title">
+                <span>{{advertisement.title}}</span>
+                <span>{{advertisement.published | date: "dd MMM yyyy"}}</span>
+            </div>
+            <div class="description">
+                {{advertisement.description}}
+                <div class="spacer">
+                    <span>
+                        Deadline: <b>{{advertisement.deadline | date: "dd MMM yyyy"}}</b>
+                    </span>
+                    <button mat-button color="primary" (click)="uploadApplication(advertisement)">Upload CV</button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

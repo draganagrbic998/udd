@@ -1,0 +1,24 @@
+<div class="root">
+    <mat-card class="mat-elevation-z24">
+        <mat-card-content>
+            <h1>{{title}}</h1>
+            <form [formGroup]="form">
+                <div [class.disabled]="pending">
+                    <mat-form-field *ngFor="let control of controls">
+                        <mat-label>{{capitalize(control)}}</mat-label>
+                        <input *ngIf="type(control) === 'text' || type(control) === 'password'"
+                            [attr.type]="type(control)" matInput [formControlName]="control"
+                            placeholder="Enter {{control}}">
+                        <mat-error>
+                            {{capitalize(control)}} is required!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="center">
+                    <button *ngIf="!pending" mat-raised-button color="primary" (click)="handleSubmit()">Submit</button>
+                    <app-spinner *ngIf="pending"></app-spinner>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

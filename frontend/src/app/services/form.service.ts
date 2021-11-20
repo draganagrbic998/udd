@@ -10,10 +10,10 @@ export class FormService {
     private builder: FormBuilder
   ) { }
 
-  build(config: { [control: string]: 'none' | 'required' }) {
+  build(config: { [control: string]: { validation: 'none' | 'required' } }) {
     const data = {}
     for (const control in config) {
-      data[control] = ['', this.buildValidation(config[control])]
+      data[control] = ['', this.buildValidation(config[control].validation)]
     }
     return this.builder.group(data);
   }

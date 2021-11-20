@@ -1,48 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Auth } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormService } from 'src/app/services/form.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { FormConfig } from 'src/app/utils/form-config';
 import { SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_TEXT, SNACKBAR_ERROR_CONFIG } from 'src/app/utils/popup';
+import { Routes } from 'src/app/utils/routes';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  template: `<app-form title="Log In" [config]="config" [pending]="pending" (submit)="login($event)"></app-form>`
 })
 export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formService: FormService,
     private storageService: StorageService,
     private router: Router,
     private snackbar: MatSnackBar,
   ) { }
 
   pending = false;
-  form = this.formService.build({
-    email: 'required',
-    password: 'required',
-  })
+  config: FormConfig = {
+    email: {
+      type: 'text',
+      validation: 'required'
+    },
+    password: {
+      type: 'text',
+      validation: 'required'
+    }
+  }
 
   ngOnInit() {
     this.storageService.removeAuth();
   }
 
-  async login() {
-    if (!this.form.valid) {
-      return;
-    }
-
+  async login(auth: Auth) {
     this.pending = true;
 
     try {
-      const res = await this.authService.login(this.form.value).toPromise();
+      const res = await this.authService.login(auth).toPromise();
       this.pending = false;
       this.storageService.setAuth(res);
-      alert(res.role);
+      if (res.role === 'kandidat') {
+        this.router.navigate([Routes.ADVERTISEMENTS])
+      } else {
+        this.router.navigate([Routes.APPLICATION_SEARCH])
+      }
     }
     catch {
       this.pending = false;
