@@ -16,6 +16,18 @@ form {
   margin-top: 60px;
 }
 
+input[type="file"] {
+  display: none;
+}
+
+.file-input {
+  margin-top: 20px;
+}
+
+.file-status {
+  margin-left: 20px;
+}
+
 .center {
   display: flex;
   flex-direction: column;

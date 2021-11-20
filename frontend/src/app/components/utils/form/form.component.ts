@@ -21,7 +21,11 @@ export class FormComponent implements OnInit {
   @Output() submit = new EventEmitter();
 
   get controls() {
-    return Object.keys(this.config);
+    return Object.keys(this.config).filter(control => this.config[control].type !== 'file')
+  }
+
+  get fileControls() {
+    return Object.keys(this.config).filter(control => this.config[control].type === 'file')
   }
 
   capitalize(text: string) {
@@ -32,8 +36,16 @@ export class FormComponent implements OnInit {
     return this.config[control].type;
   }
 
+  fileStatus(control: string) {
+    if (this.form.value[control]) {
+      return `${this.capitalize(control)} file provided`
+    }
+    return `No ${this.capitalize(control)} file provided`
+  }
+
   handleSubmit() {
-    if (!this.form.valid) {
+    // ne radi mi validacija
+    if (this.form.invalid) {
       return;
     }
     this.submit.emit(this.form.value);
