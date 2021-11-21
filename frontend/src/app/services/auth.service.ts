@@ -18,8 +18,4 @@ export class AuthService {
     return this.http.post<Auth>(this.AUTH_API, auth);
   }
 
-  register(auth: Auth) {
-    return this.http.post<Auth>(`${this.AUTH_API}/register`, auth);
-  }
-
 }

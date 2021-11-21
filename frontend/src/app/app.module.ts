@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/auth/login/login.component';
-import { RegistrationComponent } from './components/auth/registration/registration.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +22,6 @@ import { GeoSearchComponent } from './components/application/application-search/
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent,
     SpinnerComponent,
     ToolbarComponent,
     AdvertisementsComponent,
