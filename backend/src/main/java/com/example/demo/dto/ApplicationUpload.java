@@ -19,5 +19,7 @@ public class ApplicationUpload {
 	private String education;
 	private MultipartFile cvFile;
 	private MultipartFile letterFile;
+	private double lat;
+	private double lng;
 
 }

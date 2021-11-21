@@ -33,7 +33,7 @@ public class ApplicationMapper {
 		indexUnit.setLastName(upload.getLastName());
 		indexUnit.setEducation(upload.getEducation());
 		indexUnit.setAdTitle(adRepo.findById(upload.getAdvertisementId()).get().getTitle());
-		indexUnit.setLocation(new GeoPoint(44.787197, 20.457273));
+		indexUnit.setLocation(new GeoPoint(upload.getLat(), upload.getLng()));
 		return indexUnit;
 	}
 
