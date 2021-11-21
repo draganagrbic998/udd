@@ -14,16 +14,16 @@ import com.example.demo.utils.PDFHandler;
 
 import lombok.AllArgsConstructor;
 
-@Service
 @AllArgsConstructor
+@Service
 public class ApplicationService {
 
-	private final ApplicationMapper mapper;
 	private final ApplicationRepository repo;
 	private final ApplicationIndexRepository indexRepo;
+	private final ApplicationMapper mapper;
 	private final FileService fileService;
 
-	public Application create(ApplicationUpload upload) throws IOException {
+	public Application upload(ApplicationUpload upload) throws IOException {
 		Application model = mapper.map(upload);
 		ApplicationIndexUnit indexUnit = mapper.mapToIndexUnit(upload);
 
@@ -33,12 +33,11 @@ public class ApplicationService {
 		model.setCvLocation(cvLocation);
 		model.setLetterLocation(letterLocation);
 
-		indexUnit.setCvLocation(cvLocation); // is this needed?
-		indexUnit.setLetterText(PDFHandler.parse(letterLocation).trim());
-		// is the trim() necesary?
-		// fileName when storing should be id (timestamp or something like that)
+		indexUnit.setCvLocation(cvLocation);
+		indexUnit.setLetterLocation(letterLocation);
+		indexUnit.setLetterText(PDFHandler.parse(letterLocation));
 
-		indexRepo.index(indexUnit);
+		indexRepo.save(indexUnit);
 		return repo.save(model);
 	}
 

@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 public class ApplicationUpload {
 
+	private Long advertisementId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -18,5 +19,7 @@ public class ApplicationUpload {
 	private String education;
 	private MultipartFile cvFile;
 	private MultipartFile letterFile;
+	private double lat;
+	private double lng;
 
 }

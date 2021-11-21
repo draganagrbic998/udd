@@ -1,0 +1,34 @@
+<form [formGroup]="form" (submit)="$event.stopPropagation()">
+    <div [class.disabled]="pending">
+        <mat-form-field *ngIf="second">
+            <mat-label>Operation</mat-label>
+            <mat-select formControlName="operation" placeholder="Select operation">
+                <mat-option value="and">AND</mat-option>
+                <mat-option value="or">OR</mat-option>
+                <mat-option value="not">NOT</mat-option>
+            </mat-select>
+            <mat-error>
+                Operation is required!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Field</mat-label>
+            <mat-select formControlName="field" placeholder="Select field">
+                <mat-option value="firstName">First name</mat-option>
+                <mat-option value="lastName">Last name</mat-option>
+                <mat-option value="education">Education</mat-option>
+                <mat-option value="letterText">Letter text</mat-option>
+            </mat-select>
+            <mat-error>
+                Field is required!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Value</mat-label>
+            <input matInput formControlName="value" placeholder="Enter value">
+            <mat-error>
+                Value is required!
+            </mat-error>
+        </mat-form-field>
+    </div>
+</form>

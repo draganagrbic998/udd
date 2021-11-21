@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -20,27 +24,37 @@ public class Application {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	// not blank validation
-
+	@ManyToOne
+	@JoinColumn(name = "advertisement_id")
 	@NotNull
+	private Advertisement advertisement;
+
+	@Column
+	@NotBlank
 	private String firstName;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String lastName;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String email;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String address;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String education;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String cvLocation;
 
-	@NotNull
+	@Column
+	@NotBlank
 	private String letterLocation;
 
 }
