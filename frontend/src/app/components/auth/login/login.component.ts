@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { Auth, Role } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { FormConfig, FormStyle } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form';
 import { SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_TEXT, SNACKBAR_ERROR_CONFIG } from 'src/app/utils/popup';
-import { Routes } from 'src/app/utils/routes';
+import { Route } from 'src/app/utils/route';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   pending = false;
   config: FormConfig = {
     email: {
-      type: 'text',
       validation: 'required'
     },
     password: {
@@ -50,9 +49,9 @@ export class LoginComponent implements OnInit {
       this.pending = false;
       this.storageService.setAuth(res);
       if (res.role === Role.KANDIDAT) {
-        this.router.navigate([Routes.ADVERTISEMENTS])
+        this.router.navigate([Route.ADVERTISEMENTS])
       } else {
-        this.router.navigate([Routes.APPLICATION_SEARCH])
+        this.router.navigate([Route.APPLICATION_SEARCH])
       }
     }
     catch {

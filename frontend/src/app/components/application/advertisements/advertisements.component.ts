@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Advertisement } from 'src/app/models/advertisement';
 import { AdvertisementsService } from 'src/app/services/advertisements.service';
-import { Routes } from 'src/app/utils/routes';
+import { Route } from 'src/app/utils/route';
 
 @Component({
   selector: 'app-advertisements',
@@ -23,7 +23,7 @@ export class AdvertisementsComponent implements OnInit {
   }
 
   uploadApplication(advertisement: Advertisement) {
-    this.router.navigate([`${Routes.APPLICATION_UPLOAD}/${advertisement.id}`])
+    this.router.navigate([`${Route.APPLICATION_UPLOAD}/${advertisement.id}`])
   }
 
   private async read() {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ApplicationGeoSearch } from 'src/app/models/application';
-import { FormConfig, FormStyle } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form';
 
 @Component({
   selector: 'app-geo-search',
@@ -19,7 +19,6 @@ export class GeoSearchComponent {
       validation: 'required'
     },
     distance: {
-      type: 'text',
       validation: 'positive-integer'
     },
     unit: {

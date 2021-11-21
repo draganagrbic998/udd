@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable } from 'rxjs';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
-import { Routes } from './routes';
+import { Route } from './route';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
@@ -24,12 +24,13 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
             });
         }
+
         return next.handle(request).pipe(tap(() => { },
             err => {
                 if (err instanceof HttpErrorResponse) {
                     if (err.status === 401 || err.status === 403) {
                         this.storageService.removeAuth();
-                        this.router.navigate([Routes.LOGIN]);
+                        this.router.navigate([Route.LOGIN]);
                     }
                 }
             }));

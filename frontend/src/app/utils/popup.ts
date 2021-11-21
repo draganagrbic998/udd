@@ -5,7 +5,7 @@ export const SNACKBAR_SUCCESS_TEXT = 'Success! Operation finished.';
 export const SNACKBAR_ERROR_TEXT = 'An error occured! Try again.';
 
 export const SNACKBAR_SUCCESS_CONFIG: MatSnackBarConfig = {
-    horizontalPosition: 'right',
+    horizontalPosition: 'center',
     verticalPosition: 'top',
     panelClass: 'snackbar-success',
     duration: 2000

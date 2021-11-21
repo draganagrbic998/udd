@@ -1,4 +1,4 @@
-export enum Routes {
+export enum Route {
     LOGIN = 'login',
     ADVERTISEMENTS = 'advertisements',
     APPLICATION_UPLOAD = 'application_upload',

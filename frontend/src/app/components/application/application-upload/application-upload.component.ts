@@ -3,9 +3,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationUpload } from 'src/app/models/application';
 import { ApplicationService } from 'src/app/services/application.service';
-import { FormConfig, FormStyle } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form';
 import { SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_CONFIG, SNACKBAR_ERROR_TEXT, SNACKBAR_SUCCESS_CONFIG, SNACKBAR_SUCCESS_TEXT } from 'src/app/utils/popup';
-import { Routes } from 'src/app/utils/routes';
+import { Route } from 'src/app/utils/route';
 
 @Component({
   selector: 'app-application-upload',
@@ -28,15 +28,12 @@ export class ApplicationUploadComponent {
   pending = false;
   config: FormConfig = {
     firstName: {
-      type: 'text',
       validation: 'required'
     },
     lastName: {
-      type: 'text',
       validation: 'required'
     },
     email: {
-      type: 'text',
       validation: 'required'
     },
     address: {
@@ -44,7 +41,6 @@ export class ApplicationUploadComponent {
       validation: 'required'
     },
     education: {
-      type: 'text',
       validation: 'required'
     },
     cvFile: {
@@ -64,7 +60,7 @@ export class ApplicationUploadComponent {
       await this.applicationService.upload(upload).toPromise();
       this.pending = false;
       this.snackbar.open(SNACKBAR_SUCCESS_TEXT, SNACKBAR_CLOSE_BUTTON, SNACKBAR_SUCCESS_CONFIG);
-      this.router.navigate([Routes.ADVERTISEMENTS]);
+      this.router.navigate([Route.ADVERTISEMENTS]);
     }
     catch {
       this.pending = false;

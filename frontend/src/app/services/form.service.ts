@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { FormConfig } from '../utils/form-config';
+import { FormConfig } from '../utils/form';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class FormService {
     return this.builder.group(data);
   }
 
-  private buildValidation(config?: 'none' | 'required' | 'positive-integer') {
+  private buildValidation(config: 'none' | 'required' | 'positive-integer') {
     if (config === 'required') {
       return [Validators.required, Validators.pattern(new RegExp('\\S'))]
     }

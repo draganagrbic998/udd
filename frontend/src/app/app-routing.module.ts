@@ -6,27 +6,27 @@ import { ApplicationUploadComponent } from './components/application/application
 import { LoginComponent } from './components/auth/login/login.component';
 import { Role } from './models/auth';
 import { AuthGuard } from './utils/auth.guard';
-import { Routes as RoutesConfig } from './utils/routes';
+import { Route } from './utils/route';
 
 const routes: Routes = [
   {
-    path: RoutesConfig.LOGIN,
+    path: Route.LOGIN,
     component: LoginComponent
   },
   {
-    path: RoutesConfig.ADVERTISEMENTS,
+    path: Route.ADVERTISEMENTS,
     component: AdvertisementsComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.KANDIDAT] }
   },
   {
-    path: `${RoutesConfig.APPLICATION_UPLOAD}/:advertisementId`,
+    path: `${Route.APPLICATION_UPLOAD}/:advertisementId`,
     component: ApplicationUploadComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.KANDIDAT] }
   },
   {
-    path: RoutesConfig.APPLICATION_SEARCH,
+    path: Route.APPLICATION_SEARCH,
     component: ApplicationSearchComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.TEHNICKO_LICE, Role.HR_LICE, Role.ZAPOSLENI_U_SLUZBI_NABAVKE, Role.DOBAVLJAC] }
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: RoutesConfig.LOGIN
+    redirectTo: Route.LOGIN
   }
 ];
 

@@ -31,7 +31,7 @@ export interface ApplicationSearch {
     query2?: SimpleQuery,
 }
 
-export interface ApplicationGeoSearch{
+export interface ApplicationGeoSearch {
     lat: number;
     lng: number;
     distance: number;

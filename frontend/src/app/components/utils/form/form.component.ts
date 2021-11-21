@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
-import { FormConfig, FormStyle } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form';
 import places, { PlacesInstance } from 'places.js';
 import { ALGOLIA_API_ID, ALGOLIA_API_KEY } from 'src/app/utils/algolia';
 

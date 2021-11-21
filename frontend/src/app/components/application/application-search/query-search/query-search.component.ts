@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
-import { FormConfig } from 'src/app/utils/form-config';
+import { FormConfig } from 'src/app/utils/form';
 
 @Component({
   selector: 'app-query-search',
