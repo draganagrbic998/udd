@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.elasticsearch.index.query.QueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,18 @@ public class ApplicationSearchService {
 			return result;
 		}
 		template.search(new NativeSearchQueryBuilder().withQuery(query).build(), ApplicationIndexUnit.class)
+				.forEach(indexUnit -> result.add(new ApplicationSearchResult(indexUnit.getContent())));
+		return result;
+	}
+
+	public List<ApplicationSearchResult> search(CriteriaQuery query) {
+		// add hightlight
+
+		List<ApplicationSearchResult> result = new ArrayList<>();
+		if (query == null) {
+			return result;
+		}
+		template.search(query, ApplicationIndexUnit.class)
 				.forEach(indexUnit -> result.add(new ApplicationSearchResult(indexUnit.getContent())));
 		return result;
 	}

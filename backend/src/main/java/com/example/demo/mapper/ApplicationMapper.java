@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.dto.ApplicationUpload;
@@ -32,6 +33,7 @@ public class ApplicationMapper {
 		indexUnit.setLastName(upload.getLastName());
 		indexUnit.setEducation(upload.getEducation());
 		indexUnit.setAdTitle(adRepo.findById(upload.getAdvertisementId()).get().getTitle());
+		indexUnit.setLocation(new GeoPoint(44.787197, 20.457273));
 		return indexUnit;
 	}
 

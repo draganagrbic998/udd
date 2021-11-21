@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.ApplicationGeoSearch;
 import com.example.demo.dto.ApplicationSearch;
 import com.example.demo.dto.ApplicationSearchResult;
 import com.example.demo.dto.ApplicationUpload;
@@ -61,7 +62,14 @@ public class ApplicationController {
 
 	@PostMapping(path = "/search", consumes = "application/json")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch searchQuery) {
-		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(searchQuery)));
+	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch search) {
+		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(search)));
 	}
+
+	@PostMapping(path = "/geo_search", consumes = "application/json")
+	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
+	public ResponseEntity<List<ApplicationSearchResult>> geoSearch(@RequestBody ApplicationGeoSearch search) {
+		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(search)));
+	}
+
 }

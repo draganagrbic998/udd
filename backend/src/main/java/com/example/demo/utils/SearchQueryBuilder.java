@@ -3,29 +3,37 @@ package com.example.demo.utils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.data.elasticsearch.core.query.Criteria;
+import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 
+import com.example.demo.dto.ApplicationGeoSearch;
 import com.example.demo.dto.ApplicationSearch;
 
 public class SearchQueryBuilder {
 
-	public static QueryBuilder buildQuery(ApplicationSearch searchQuery) {
-		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery1().getField(),
-				searchQuery.getQuery1().getValue());
+	public static CriteriaQuery buildQuery(ApplicationGeoSearch search) {
+		return new CriteriaQuery(
+				new Criteria("location").within(search.getLocation(), search.getDistance() + search.getUnit()));
+	}
 
-		if (searchQuery.getOperation() == null || searchQuery.getQuery2() == null) {
+	public static QueryBuilder buildQuery(ApplicationSearch search) {
+		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(search.getQuery1().getField(),
+				search.getQuery1().getValue());
+
+		if (search.getOperation() == null || search.getQuery2() == null) {
 			return query1;
 		}
 
-		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(searchQuery.getQuery2().getField(),
-				searchQuery.getQuery2().getValue());
+		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(search.getQuery2().getField(),
+				search.getQuery2().getValue());
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-		if (searchQuery.getOperation().equalsIgnoreCase("and")) {
+		if (search.getOperation().equalsIgnoreCase("and")) {
 			boolQuery.must(query1);
 			boolQuery.must(query2);
-		} else if (searchQuery.getOperation().equalsIgnoreCase("or")) {
+		} else if (search.getOperation().equalsIgnoreCase("or")) {
 			boolQuery.should(query1);
 			boolQuery.should(query2);
-		} else if (searchQuery.getOperation().equalsIgnoreCase("not")) {
+		} else if (search.getOperation().equalsIgnoreCase("not")) {
 			boolQuery.must(query1);
 			boolQuery.mustNot(query2);
 		} else {

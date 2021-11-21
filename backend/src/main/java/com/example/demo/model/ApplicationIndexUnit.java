@@ -4,7 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.GeoPointField;
 import org.springframework.data.elasticsearch.annotations.Setting;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,4 +41,6 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String letterLocation;
 
+	@GeoPointField
+	private GeoPoint location;
 }
