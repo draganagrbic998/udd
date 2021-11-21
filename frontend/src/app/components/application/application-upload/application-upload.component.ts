@@ -35,7 +35,7 @@ export class ApplicationUploadComponent {
       validation: 'required'
     },
     address: {
-      type: 'text',
+      type: 'location',
       validation: 'required'
     },
     education: {

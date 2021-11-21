@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       validation: 'required'
     },
     password: {
-      type: 'text',
+      type: 'password',
       validation: 'required'
     }
   }

@@ -6,8 +6,10 @@
                 <div [class.disabled]="pending">
                     <mat-form-field *ngFor="let control of controls">
                         <mat-label>{{capitalize(control)}}</mat-label>
-                        <input *ngIf="type(control) === 'text' || type(control) === 'password'" matInput
-                            [formControlName]="control" placeholder="Enter {{control}}">
+                        <input *ngIf="type(control) === 'text' || type(control) === 'password'" [type]="type(control)"
+                            matInput [formControlName]="control" placeholder="Enter {{control}}">
+                        <input *ngIf="type(control) === 'location'" #locationInput matInput autocomplete="off"
+                            [formControlName]="control" placeholder="Country, city, street...">
                         <mat-error>
                             {{capitalize(control)}} is required!
                         </mat-error>
