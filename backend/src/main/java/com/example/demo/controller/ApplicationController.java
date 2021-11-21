@@ -21,6 +21,7 @@ import com.example.demo.dto.ApplicationUpload;
 import com.example.demo.model.Application;
 import com.example.demo.service.ApplicationSearchService;
 import com.example.demo.service.ApplicationService;
+import com.example.demo.service.FileService;
 import com.example.demo.utils.SearchQueryBuilder;
 
 import lombok.AllArgsConstructor;
@@ -35,41 +36,40 @@ public class ApplicationController {
 
 	@GetMapping("/cv/{fileName}")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<Object> downloadCv(@PathVariable String fileName) {
+	public ResponseEntity<FileSystemResource> downloadCv(@PathVariable String fileName) {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-				.body(new FileSystemResource("src/main/resources/pdf/" + fileName));
+				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
 	}
 
 	@GetMapping("/letter/{fileName}")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<Object> downloadLetter(@PathVariable String fileName) {
+	public ResponseEntity<FileSystemResource> downloadLetter(@PathVariable String fileName) {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-				.body(new FileSystemResource("src/main/resources/pdf/" + fileName));
+				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
 	}
 
 	@PostMapping
 	@PreAuthorize("hasAuthority('kandidat')")
-	public ResponseEntity<Application> create(@ModelAttribute ApplicationUpload upload) {
+	public ResponseEntity<Application> upload(@ModelAttribute ApplicationUpload upload) {
 		try {
-			return ResponseEntity.ok(service.create(upload));
+			return ResponseEntity.ok(service.upload(upload));
 		} catch (Exception e) {
-			e.printStackTrace();
 			return ResponseEntity.badRequest().build();
 		}
 	}
 
-	@PostMapping(path = "/search", consumes = "application/json")
+	@PostMapping("/search")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch search) {
-		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(search)));
+		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.build(search)));
 	}
 
-	@PostMapping(path = "/geo_search", consumes = "application/json")
+	@PostMapping("/geo_search")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<List<ApplicationSearchResult>> geoSearch(@RequestBody ApplicationGeoSearch search) {
-		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.buildQuery(search)));
+	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationGeoSearch search) {
+		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.build(search)));
 	}
 
 }

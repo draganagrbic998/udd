@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Getter;
@@ -28,30 +29,25 @@ import lombok.Setter;
 @Table(name = "user_table")
 public class User implements UserDetails {
 
-	// not blank validation
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name = "role_id")
+	@NotNull
 	private Role role;
 
 	@Column(unique = true)
+	@NotBlank
 	private String email;
 
 	@Column
+	@NotBlank
 	private String password;
 
-	public User(String email, String password, Role role) {
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
-
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<Role> getAuthorities() {
 		List<Role> roles = new ArrayList<>();
 		roles.add(role);
 		return roles;

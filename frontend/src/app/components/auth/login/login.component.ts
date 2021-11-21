@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Auth } from 'src/app/models/auth';
+import { Auth, Role } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormConfig, FormStyle } from 'src/app/utils/form-config';
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       const res = await this.authService.login(auth).toPromise();
       this.pending = false;
       this.storageService.setAuth(res);
-      if (res.role === 'kandidat') {
+      if (res.role === Role.KANDIDAT) {
         this.router.navigate([Routes.ADVERTISEMENTS])
       } else {
         this.router.navigate([Routes.APPLICATION_SEARCH])

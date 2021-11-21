@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Advertisement;
-import com.example.demo.service.AdvertisementsService;
+import com.example.demo.service.AdvertisementService;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/advertisements")
-public class AdvertisementsController {
+public class AdvertisementController {
 
-	private final AdvertisementsService service;
+	private final AdvertisementService service;
 
 	@GetMapping
 	public ResponseEntity<List<Advertisement>> read() {

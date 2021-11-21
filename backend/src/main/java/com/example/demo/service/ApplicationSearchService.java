@@ -21,24 +21,14 @@ public class ApplicationSearchService {
 	private final ElasticsearchRestTemplate template;
 
 	public List<ApplicationSearchResult> search(QueryBuilder query) {
-		// add hightlight
-
 		List<ApplicationSearchResult> result = new ArrayList<>();
-		if (query == null) {
-			return result;
-		}
 		template.search(new NativeSearchQueryBuilder().withQuery(query).build(), ApplicationIndexUnit.class)
 				.forEach(indexUnit -> result.add(new ApplicationSearchResult(indexUnit.getContent())));
 		return result;
 	}
 
 	public List<ApplicationSearchResult> search(CriteriaQuery query) {
-		// add hightlight
-
 		List<ApplicationSearchResult> result = new ArrayList<>();
-		if (query == null) {
-			return result;
-		}
 		template.search(query, ApplicationIndexUnit.class)
 				.forEach(indexUnit -> result.add(new ApplicationSearchResult(indexUnit.getContent())));
 		return result;

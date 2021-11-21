@@ -12,36 +12,34 @@ import com.example.demo.dto.ApplicationSearch;
 
 public class SearchQueryBuilder {
 
-	public static CriteriaQuery buildQuery(ApplicationGeoSearch search) {
-		return new CriteriaQuery(new Criteria("location").within(new GeoPoint(search.getLat(), search.getLng()),
-				search.getDistance() + search.getUnit()));
-	}
-
-	public static QueryBuilder buildQuery(ApplicationSearch search) {
+	public static QueryBuilder build(ApplicationSearch search) {
 		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(search.getQuery1().getField(),
 				search.getQuery1().getValue());
-
 		if (search.getOperation() == null || search.getQuery2() == null) {
 			return query1;
 		}
 
 		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(search.getQuery2().getField(),
 				search.getQuery2().getValue());
-		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-		if (search.getOperation().equalsIgnoreCase("and")) {
-			boolQuery.must(query1);
-			boolQuery.must(query2);
-		} else if (search.getOperation().equalsIgnoreCase("or")) {
-			boolQuery.should(query1);
-			boolQuery.should(query2);
-		} else if (search.getOperation().equalsIgnoreCase("not")) {
-			boolQuery.must(query1);
-			boolQuery.mustNot(query2);
-		} else {
-			return null;
-		}
-		return boolQuery;
+		BoolQueryBuilder query = QueryBuilders.boolQuery();
 
+		if (search.getOperation().equalsIgnoreCase("and")) {
+			query.must(query1);
+			query.must(query2);
+		} else if (search.getOperation().equalsIgnoreCase("or")) {
+			query.should(query1);
+			query.should(query2);
+		} else {
+			query.must(query1);
+			query.mustNot(query2);
+		}
+		return query;
+
+	}
+
+	public static CriteriaQuery build(ApplicationGeoSearch search) {
+		return new CriteriaQuery(new Criteria("location").within(new GeoPoint(search.getLat(), search.getLng()),
+				search.getDistance() + search.getUnit()));
 	}
 
 }

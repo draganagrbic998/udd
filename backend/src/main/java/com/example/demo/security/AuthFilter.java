@@ -25,11 +25,10 @@ public class AuthFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		String token = request.getHeader("Authorization");
-		if (token != null && !token.trim().equals("")) {
+		if (token != null && !token.isBlank()) {
 			UserDetails user = userService.loadUserByUsername(tokenUtils.getEmail(token));
 			if (user != null && tokenUtils.validateToken(user, token)) {
-				AuthToken authToken = new AuthToken(user, token);
-				SecurityContextHolder.getContext().setAuthentication(authToken);
+				SecurityContextHolder.getContext().setAuthentication(new AuthToken(user, token));
 			}
 		}
 		filterChain.doFilter(request, response);

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,18 +23,20 @@ public class Advertisement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	// not blank validation
-
 	@Column
+	@NotBlank
 	private String title;
 
 	@Column
+	@NotBlank
 	private String description;
 
 	@Column
+	@NotBlank
 	private Date published;
 
 	@Column
+	@NotBlank
 	private Date deadline;
 
 }

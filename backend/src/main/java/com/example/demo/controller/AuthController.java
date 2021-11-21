@@ -16,11 +16,11 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/auth")
 public class AuthController {
 
-	private final UserService userService;
+	private final UserService service;
 
 	@PostMapping
 	public ResponseEntity<Auth> login(@RequestBody Auth auth) {
-		return ResponseEntity.ok(userService.login(auth));
+		return ResponseEntity.ok(service.login(auth));
 	}
 
 }

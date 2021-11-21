@@ -1,6 +1,14 @@
 export interface Auth {
     email: string;
     password: string;
-    role: 'kandidat' | 'tehnicko lice' | 'hr lice' | 'zaposleni u sluzbi nabavke' | 'dobavljac';
+    role: Role;
     token: string;
+}
+
+export enum Role {
+    KANDIDAT = 'kandidat',
+    TEHNICKO_LICE = 'tehnicko lice',
+    HR_LICE = 'hr lice',
+    ZAPOSLENI_U_SLUZBI_NABAVKE = 'zaposleni u sluzbi nabavke',
+    DOBAVLJAC = 'dobavljac'
 }

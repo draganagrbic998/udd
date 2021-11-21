@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Document(indexName = "digitallibrary")
+@Document(indexName = "library")
 @Setting(settingPath = "settings.json")
 public class ApplicationIndexUnit {
 
@@ -31,6 +31,9 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = true, store = true)
 	private String letterText;
 
+	@GeoPointField
+	private GeoPoint location;
+
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String adTitle;
 
@@ -41,6 +44,4 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String letterLocation;
 
-	@GeoPointField
-	private GeoPoint location;
 }

@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
-public class AdvertisementsService {
+public class AdvertisementService {
 
 	private final AdvertisementRepository repo;
 
