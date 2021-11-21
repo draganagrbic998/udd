@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
-import { FormConfig } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form-config';
 import places, { PlacesInstance } from 'places.js';
 import { ALGOLIA_API_ID, ALGOLIA_API_KEY } from 'src/app/utils/algolia';
 
@@ -21,6 +21,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   @Input() config: FormConfig;
   @Input() pending: boolean;
   @Output() submit = new EventEmitter();
+  @Input() style: FormStyle;
 
   @ViewChild('locationInput') locationInput: ElementRef<HTMLInputElement>;
   locationAutocomplete: PlacesInstance;
@@ -35,23 +36,18 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   capitalize(text: string) {
-    return text[0].toUpperCase() + text.substr(1);
+    text = text.replace(/([a-z])([A-Z])/g, '$1 $2');
+    return text[0].toUpperCase() + text.substr(1).toLowerCase();
   }
 
   type(control: string) {
     return this.config[control].type;
   }
 
-  fileStatus(control: string) {
-    if (this.form.value[control]) {
-      return `${this.capitalize(control)} file provided`
-    }
-    return `No ${this.capitalize(control)} file provided`
-  }
-
   handleSubmit() {
     // ne radi mi validacija
     if (this.form.invalid) {
+      this.form.markAsTouched();
       return;
     }
     this.submit.emit({ ...this.form.value, lat: this.location?.lat, lng: this.location?.lng });

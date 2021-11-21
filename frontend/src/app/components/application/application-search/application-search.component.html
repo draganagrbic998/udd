@@ -2,7 +2,7 @@
     <div class="search-form">
         <mat-card class="mat-elevation-z24">
             <mat-card-content>
-                <h1>Search form</h1>
+                <h1>Common Search</h1>
                 <app-query-search #query1></app-query-search>
                 <mat-expansion-panel hideToggle>
                     <mat-expansion-panel-header>
@@ -12,12 +12,9 @@
                     </mat-expansion-panel-header>
                     <app-query-search #query2 [second]="true"></app-query-search>
                 </mat-expansion-panel>
-                <div class="search-button">
-                    <span></span>
-                    <span>
-                        <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Search</button>
-                        <app-spinner *ngIf="searchPending"></app-spinner>
-                    </span>
+                <div class="center">
+                    <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Search</button>
+                    <app-spinner *ngIf="searchPending"></app-spinner>
                 </div>
             </mat-card-content>
         </mat-card>

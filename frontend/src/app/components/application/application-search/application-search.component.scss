@@ -16,15 +16,19 @@
   padding: 20px;
 }
 
+h1 {
+  text-align: center;
+}
+
 .second-title {
   color: $accent;
 }
 
-.search-button {
+.center {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 

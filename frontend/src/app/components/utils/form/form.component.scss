@@ -1,7 +1,7 @@
+@import "../../../../styles/theme";
+
 .root {
-  width: 500px;
   margin: 0 auto;
-  margin-top: 100px;
 }
 
 .mat-card {
@@ -26,6 +26,10 @@ input[type="file"] {
 
 .file-status {
   margin-left: 20px;
+}
+
+.warning{
+  color: $warn;
 }
 
 .center {

@@ -1,4 +1,4 @@
-<div class="root">
+<div class="root" [ngStyle]="style">
     <mat-card class="mat-elevation-z24">
         <mat-card-content>
             <h1>{{title}}</h1>
@@ -19,8 +19,11 @@
                             <input #fileInput type="file" accept="application/pdf"
                                 (change)="updateFile(control, fileInput.files[0]); fileInput.value=null">
                             <button mat-raised-button color="accent" (click)="fileInput.click()">Upload</button>
-                            <span class="file-status">
-                                {{fileStatus(control)}}
+                            <span class="file-status" [class.warning]="!form.value[control] && form.touched">
+                                {{
+                                    form.value[control] ? capitalize(control) + ' file provided' : 
+                                    'No ' + capitalize(control) + ' file provided'
+                                }}
                             </span>
                         </div>
                     </ng-container>

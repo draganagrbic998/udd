@@ -4,3 +4,8 @@ export interface FormConfig {
         validation: 'none' | 'required'
     }
 }
+
+export interface FormStyle {
+    width?: string;
+    'margin-top'?: string;
+}

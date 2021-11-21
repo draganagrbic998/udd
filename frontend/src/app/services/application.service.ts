@@ -22,16 +22,16 @@ export class ApplicationService {
     return this.http.post<Application>(this.APPLICATIONS_API, data);
   }
 
+  downloadFile(cv: boolean, fileName: string) {
+    return this.http.get<Blob>(`${this.APPLICATIONS_API}/${cv ? 'cv' : 'letter'}/${fileName}`, { responseType: 'blob' as 'json' });
+  }
+
   search(search: ApplicationSearch) {
     return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/search`, search);
   }
 
   geoSearch(search: ApplicationGeoSearch) {
     return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/geo_search`, search);
-  }
-
-  downloadFile(cv: boolean, fileName: string) {
-    return this.http.get<Blob>(`${this.APPLICATIONS_API}/${cv ? 'cv' : 'letter'}/${fileName}`, { responseType: 'blob' as 'json' });
   }
 
 }

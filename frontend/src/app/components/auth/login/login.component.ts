@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { Auth } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { FormConfig } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form-config';
 import { SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_TEXT, SNACKBAR_ERROR_CONFIG } from 'src/app/utils/popup';
 import { Routes } from 'src/app/utils/routes';
 
 @Component({
   selector: 'app-login',
-  template: `<app-form title="Log In" [config]="config" [pending]="pending" (submit)="login($event)"></app-form>`
+  template: `<app-form title="Log In" [config]="config" [pending]="pending" [style]="style" (submit)="login($event)"></app-form>`
 })
 export class LoginComponent implements OnInit {
 
@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private snackbar: MatSnackBar,
   ) { }
+
+  style: FormStyle = {
+    width: '500px',
+    'margin-top': '200px'
+  }
 
   pending = false;
   config: FormConfig = {

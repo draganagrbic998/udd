@@ -3,13 +3,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationUpload } from 'src/app/models/application';
 import { ApplicationService } from 'src/app/services/application.service';
-import { FormConfig } from 'src/app/utils/form-config';
+import { FormConfig, FormStyle } from 'src/app/utils/form-config';
 import { SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_CONFIG, SNACKBAR_ERROR_TEXT, SNACKBAR_SUCCESS_CONFIG, SNACKBAR_SUCCESS_TEXT } from 'src/app/utils/popup';
 import { Routes } from 'src/app/utils/routes';
 
 @Component({
   selector: 'app-application-upload',
-  template: `<app-form title="Upload Application" [config]="config" [pending]="pending" (submit)="upload($event)"></app-form>`
+  template: `<app-form title="Upload Application" [config]="config" [pending]="pending" [style]="style" (submit)="upload($event)"></app-form>`
 })
 export class ApplicationUploadComponent {
 
@@ -19,6 +19,11 @@ export class ApplicationUploadComponent {
     private route: ActivatedRoute,
     private snackbar: MatSnackBar,
   ) { }
+
+  style: FormStyle = {
+    width: '550px',
+    'margin-top': '100px'
+  }
 
   pending = false;
   config: FormConfig = {
