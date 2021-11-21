@@ -19,10 +19,6 @@ export class ToolbarComponent {
     return this.router.url.includes(Routes.LOGIN);
   }
 
-  get registration() {
-    return this.router.url.includes(Routes.REGISTRATION);
-  }
-
   logout() {
     this.storageService.removeAuth();
     this.router.navigate([Routes.LOGIN]);
