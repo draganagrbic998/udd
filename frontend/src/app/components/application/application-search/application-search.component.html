@@ -13,7 +13,7 @@
                     <app-query-search #query2 [second]="true"></app-query-search>
                 </mat-expansion-panel>
                 <div class="center">
-                    <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Search</button>
+                    <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Submit</button>
                     <app-spinner *ngIf="searchPending"></app-spinner>
                 </div>
             </mat-card-content>
@@ -30,9 +30,15 @@
                         <span>{{result.adTitle}}</span>
                     </div>
                     <div class="description">
-                        <b>First name:</b> {{result.firstName}}<br />
-                        <b>Last name:</b> {{result.lastName}}<br />
-                        <b>Education:</b> {{result.education}}<br />
+                        <div class="details-row">
+                            <b>First name:</b> {{result.firstName}}
+                        </div>
+                        <div class="details-row">
+                            <b>Last name:</b> {{result.lastName}}
+                        </div>
+                        <div class="details-row">
+                            <b>Education:</b> {{result.education}}
+                        </div>
                         <div class="download">
                             <span></span>
                             <span>

@@ -41,7 +41,11 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   type(control: string) {
-    return this.config[control].type;
+    return this.config[control].type || 'text'
+  }
+
+  options(control: string) {
+    return this.config[control].options || []
   }
 
   handleSubmit() {

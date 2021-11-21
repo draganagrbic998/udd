@@ -20,11 +20,12 @@ export class GeoSearchComponent {
     },
     distance: {
       type: 'text',
-      validation: 'required'
+      validation: 'positive-integer'
     },
     unit: {
-      type: 'text',
-      validation: 'required'
+      type: 'select',
+      validation: 'required',
+      options: ['km', 'm']
     }
   }
   @Output() search = new EventEmitter<ApplicationGeoSearch>();

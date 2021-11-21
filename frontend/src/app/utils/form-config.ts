@@ -1,7 +1,8 @@
 export interface FormConfig {
     [control: string]: {
-        type?: 'text' | 'password' | 'file' | 'location',
-        validation: 'none' | 'required'
+        type?: 'text' | 'password' | 'file' | 'location' | 'select',
+        validation?: 'none' | 'required' | 'positive-integer',
+        options?: string[]
     }
 }
 

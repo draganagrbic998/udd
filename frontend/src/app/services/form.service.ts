@@ -19,9 +19,12 @@ export class FormService {
     return this.builder.group(data);
   }
 
-  private buildValidation(config: 'none' | 'required') {
+  private buildValidation(config?: 'none' | 'required' | 'positive-integer') {
     if (config === 'required') {
       return [Validators.required, Validators.pattern(new RegExp('\\S'))]
+    }
+    if (config === 'positive-integer') {
+      return [Validators.required, Validators.pattern(/^([1-9]\d*)?$/)]
     }
     return undefined;
   }
