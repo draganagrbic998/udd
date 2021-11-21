@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Application, ApplicationSearch, ApplicationSearchResult, ApplicationUpload } from '../models/application';
+import { Application, ApplicationGeoSearch, ApplicationSearch, ApplicationSearchResult, ApplicationUpload } from '../models/application';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,10 @@ export class ApplicationService {
 
   search(search: ApplicationSearch) {
     return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/search`, search);
+  }
+
+  geoSearch(search: ApplicationGeoSearch) {
+    return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/geo_search`, search);
   }
 
   downloadFile(cv: boolean, fileName: string) {

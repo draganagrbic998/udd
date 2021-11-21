@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { QuerySearchComponent } from './query-search/query-search.component';
 import { ApplicationService } from 'src/app/services/application.service';
-import { ApplicationSearch, ApplicationSearchResult } from 'src/app/models/application';
+import { ApplicationGeoSearch, ApplicationSearch, ApplicationSearchResult } from 'src/app/models/application';
 
 @Component({
   selector: 'app-application-search',
@@ -17,8 +17,20 @@ export class ApplicationSearchComponent {
   @ViewChild('query1') query1: QuerySearchComponent;
   @ViewChild('query2') query2: QuerySearchComponent;
 
-  pending = false;
+  searchPending = false;
+  geoSearchPending = false;
   searchResults: ApplicationSearchResult[];
+
+  async geoSearch(search: ApplicationGeoSearch) {
+    this.geoSearchPending = true;
+
+    try {
+      this.searchResults = await this.applicationService.geoSearch(search).toPromise();
+      this.geoSearchPending = false;
+    } catch {
+      this.geoSearchPending = false;
+    }
+  }
 
   async search() {
     if (this.query1.form.invalid) {
@@ -32,12 +44,12 @@ export class ApplicationSearchComponent {
       search.query2 = this.query2.form.value;
     }
 
-    this.pending = true;
+    this.searchPending = true;
     try {
       this.searchResults = await this.applicationService.search(search).toPromise();
-      this.pending = false;
+      this.searchPending = false;
     } catch {
-      this.pending = false;
+      this.searchPending = false;
     }
   }
 

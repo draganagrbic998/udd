@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import org.springframework.data.elasticsearch.core.geo.GeoPoint;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +9,8 @@ import lombok.Setter;
 @Setter
 public class ApplicationGeoSearch {
 
-	private GeoPoint location;
+	private double lat;
+	private double lng;
 	private double distance;
 	private String unit;
 

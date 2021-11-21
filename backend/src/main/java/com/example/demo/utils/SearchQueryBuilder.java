@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 
@@ -12,8 +13,8 @@ import com.example.demo.dto.ApplicationSearch;
 public class SearchQueryBuilder {
 
 	public static CriteriaQuery buildQuery(ApplicationGeoSearch search) {
-		return new CriteriaQuery(
-				new Criteria("location").within(search.getLocation(), search.getDistance() + search.getUnit()));
+		return new CriteriaQuery(new Criteria("location").within(new GeoPoint(search.getLat(), search.getLng()),
+				search.getDistance() + search.getUnit()));
 	}
 
 	public static QueryBuilder buildQuery(ApplicationSearch search) {

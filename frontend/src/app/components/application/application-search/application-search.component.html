@@ -15,12 +15,14 @@
                 <div class="search-button">
                     <span></span>
                     <span>
-                        <button *ngIf="!pending" mat-raised-button color="primary" (click)="search()">Search</button>
-                        <app-spinner *ngIf="pending"></app-spinner>
+                        <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Search</button>
+                        <app-spinner *ngIf="searchPending"></app-spinner>
                     </span>
                 </div>
             </mat-card-content>
         </mat-card>
+
+        <app-geo-search [pending]="geoSearchPending" (search)="geoSearch($event)"></app-geo-search>
     </div>
 
     <div class="search-results">

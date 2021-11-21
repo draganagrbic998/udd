@@ -17,6 +17,7 @@ import { ApplicationSearchComponent } from './components/application/application
 import { FormComponent } from './components/utils/form/form.component';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { QuerySearchComponent } from './components/application/application-search/query-search/query-search.component';
+import { GeoSearchComponent } from './components/application/application-search/geo-search/geo-search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { QuerySearchComponent } from './components/application/application-searc
     ApplicationUploadComponent,
     ApplicationSearchComponent,
     FormComponent,
-    QuerySearchComponent
+    QuerySearchComponent,
+    GeoSearchComponent
   ],
   imports: [
     BrowserModule,
