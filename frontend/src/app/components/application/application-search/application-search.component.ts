@@ -21,17 +21,6 @@ export class ApplicationSearchComponent {
   geoSearchPending = false;
   searchResults: ApplicationSearchResult[];
 
-  async geoSearch(search: ApplicationGeoSearch) {
-    this.geoSearchPending = true;
-
-    try {
-      this.searchResults = await this.applicationService.geoSearch(search).toPromise();
-      this.geoSearchPending = false;
-    } catch {
-      this.geoSearchPending = false;
-    }
-  }
-
   async search() {
     if (this.query1.form.invalid) {
       return;
@@ -50,6 +39,17 @@ export class ApplicationSearchComponent {
       this.searchPending = false;
     } catch {
       this.searchPending = false;
+    }
+  }
+
+  async geoSearch(search: ApplicationGeoSearch) {
+    this.geoSearchPending = true;
+
+    try {
+      this.searchResults = await this.applicationService.geoSearch(search).toPromise();
+      this.geoSearchPending = false;
+    } catch {
+      this.geoSearchPending = false;
     }
   }
 

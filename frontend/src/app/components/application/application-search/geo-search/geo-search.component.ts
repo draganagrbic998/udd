@@ -9,10 +9,8 @@ import { FormConfig, FormStyle } from 'src/app/utils/form';
 export class GeoSearchComponent {
 
   @Input() pending: boolean;
+  @Output() search = new EventEmitter<ApplicationGeoSearch>();
 
-  style: FormStyle = {
-    "margin-top": '50px'
-  }
   config: FormConfig = {
     location: {
       type: 'location',
@@ -27,6 +25,8 @@ export class GeoSearchComponent {
       options: ['km', 'm']
     }
   }
-  @Output() search = new EventEmitter<ApplicationGeoSearch>();
+  style: FormStyle = {
+    "margin-top": '50px'
+  }
 
 }

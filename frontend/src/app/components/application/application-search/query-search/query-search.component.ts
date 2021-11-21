@@ -16,22 +16,22 @@ export class QuerySearchComponent implements OnInit {
   @Input() pending: boolean;
   @Input() second: boolean;
   form: FormGroup;
-  config: FormConfig = {
-    field: {
-      validation: 'required'
-    },
-    value: {
-      validation: 'required'
-    },
-  }
 
   ngOnInit() {
+    const config: FormConfig = {
+      field: {
+        validation: 'required'
+      },
+      value: {
+        validation: 'required'
+      },
+    }
     if (this.second) {
-      this.config.operation = {
+      config.operation = {
         validation: 'required'
       }
     }
-    this.form = this.formService.build(this.config);
+    this.form = this.formService.build(config);
   }
 
 }

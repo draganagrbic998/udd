@@ -1,5 +1,5 @@
-<div style="margin-left: 100px; margin-right: 100px;">
-    <div *ngFor="let advertisement of advertisements" class="root mat-elevation-z24">
+<div class="root">
+    <div *ngFor="let advertisement of advertisements" class="advertisement mat-elevation-z24">
         <mat-card>
             <mat-card-content>
                 <div class="title">
@@ -8,7 +8,7 @@
                 </div>
                 <div class="description">
                     {{advertisement.description}}
-                    <div class="spacer">
+                    <div class="details">
                         <span>
                             Deadline: <b>{{advertisement.deadline | date: "dd MMM yyyy"}}</b>
                         </span>

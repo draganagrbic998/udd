@@ -21,11 +21,6 @@ export class LoginComponent implements OnInit {
     private snackbar: MatSnackBar,
   ) { }
 
-  style: FormStyle = {
-    width: '500px',
-    'margin-top': '200px'
-  }
-
   pending = false;
   config: FormConfig = {
     email: {
@@ -35,6 +30,10 @@ export class LoginComponent implements OnInit {
       type: 'password',
       validation: 'required'
     }
+  }
+  style: FormStyle = {
+    width: '500px',
+    'margin-top': '200px'
   }
 
   ngOnInit() {
@@ -48,12 +47,14 @@ export class LoginComponent implements OnInit {
       const res = await this.authService.login(auth).toPromise();
       this.pending = false;
       this.storageService.setAuth(res);
+
       if (res.role === Role.KANDIDAT) {
         this.router.navigate([Route.ADVERTISEMENTS])
       } else {
         this.router.navigate([Route.APPLICATION_SEARCH])
       }
     }
+
     catch {
       this.pending = false;
       this.snackbar.open(SNACKBAR_ERROR_TEXT, SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_CONFIG);

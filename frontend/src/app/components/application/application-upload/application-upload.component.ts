@@ -20,11 +20,6 @@ export class ApplicationUploadComponent {
     private snackbar: MatSnackBar,
   ) { }
 
-  style: FormStyle = {
-    width: '550px',
-    'margin-top': '100px'
-  }
-
   pending = false;
   config: FormConfig = {
     firstName: {
@@ -52,16 +47,22 @@ export class ApplicationUploadComponent {
       validation: 'required'
     }
   }
+  style: FormStyle = {
+    width: '550px',
+    'margin-top': '100px'
+  }
 
   async upload(upload: ApplicationUpload) {
     upload.advertisementId = +this.route.snapshot.params.advertisementId
     this.pending = true;
+
     try {
       await this.applicationService.upload(upload).toPromise();
       this.pending = false;
       this.snackbar.open(SNACKBAR_SUCCESS_TEXT, SNACKBAR_CLOSE_BUTTON, SNACKBAR_SUCCESS_CONFIG);
       this.router.navigate([Route.ADVERTISEMENTS]);
     }
+
     catch {
       this.pending = false;
       this.snackbar.open(SNACKBAR_ERROR_TEXT, SNACKBAR_CLOSE_BUTTON, SNACKBAR_ERROR_CONFIG);

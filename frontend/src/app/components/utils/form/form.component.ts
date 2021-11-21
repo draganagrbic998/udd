@@ -16,12 +16,12 @@ export class FormComponent implements OnInit, AfterViewInit {
     private formService: FormService
   ) { }
 
-  form: FormGroup;
   @Input() title: string;
   @Input() config: FormConfig;
   @Input() pending: boolean;
-  @Output() submit = new EventEmitter();
   @Input() style: FormStyle;
+  @Output() submit = new EventEmitter();
+  form: FormGroup;
 
   @ViewChild('locationInput') locationInput: ElementRef<HTMLInputElement>;
   locationAutocomplete: PlacesInstance;
@@ -35,9 +35,20 @@ export class FormComponent implements OnInit, AfterViewInit {
     return Object.keys(this.config).filter(control => this.config[control].type === 'file')
   }
 
-  capitalize(text: string) {
-    text = text.replace(/([a-z])([A-Z])/g, '$1 $2');
-    return text[0].toUpperCase() + text.substr(1).toLowerCase();
+  ngOnInit() {
+    this.form = this.formService.build(this.config);
+  }
+
+  ngAfterViewInit() {
+    if (this.locationInput) {
+      this.locationAutocomplete = places({
+        container: this.locationInput.nativeElement,
+        apiKey: ALGOLIA_API_KEY,
+        appId: ALGOLIA_API_ID
+      });
+
+      this.locationAutocomplete.on('change', event => this.location = event.suggestion.latlng);
+    }
   }
 
   type(control: string) {
@@ -49,7 +60,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   handleSubmit() {
-    // ne radi mi validacija
     if (this.form.invalid) {
       this.form.markAsTouched();
       return;
@@ -57,32 +67,13 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.submit.emit({ ...this.form.value, lat: this.location?.lat, lng: this.location?.lng });
   }
 
+  capitalize(text: string) {
+    text = text.replace(/([a-z])([A-Z])/g, '$1 $2');
+    return text[0].toUpperCase() + text.substr(1).toLowerCase();
+  }
+
   updateFile(control: string, file: Blob) {
     this.form.get(control).setValue(file);
-  }
-
-  ngOnInit() {
-    this.form = this.formService.build(this.config);
-  }
-
-  ngAfterViewInit() {
-    if (!this.locationInput) {
-      return;
-    }
-    this.locationAutocomplete = places({
-      container: this.locationInput.nativeElement,
-      appId: ALGOLIA_API_ID,
-      apiKey: ALGOLIA_API_KEY
-    });
-
-    this.locationAutocomplete.on('change', event => {
-      this.location = event.suggestion.latlng;
-      /*this.geolocation.lat = event.suggestion.latlng.lat;
-      this.geolocation.lng = event.suggestion.latlng.lng;
-      this.culturalForm.get('location').setValue(event.suggestion.value);
-      this.culturalForm.get('location').updateValueAndValidity();*/
-      console.log(event.suggestion.latlng);
-    });
   }
 
 }

@@ -13,11 +13,7 @@ h1 {
 }
 
 form {
-  margin-top: 60px;
-}
-
-input[type="file"] {
-  display: none;
+  margin-top: 50px;
 }
 
 .file-input {
@@ -28,7 +24,7 @@ input[type="file"] {
   margin-left: 20px;
 }
 
-.warning{
+.warning {
   color: $warn;
 }
 
@@ -37,5 +33,9 @@ input[type="file"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 50px;
+}
+
+input[type="file"] {
+  display: none;
 }
