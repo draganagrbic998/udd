@@ -75,3 +75,7 @@ h1 {
 a {
   margin-right: 10px;
 }
+
+::ng-deep em {
+  font-weight: bold;
+}

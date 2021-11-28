@@ -31,13 +31,16 @@
                     </div>
                     <div class="description">
                         <div class="details-row">
-                            <b>First name:</b> {{result.firstName}}
+                            First name: <span [innerHtml]="result.firstName"></span>
                         </div>
                         <div class="details-row">
-                            <b>Last name:</b> {{result.lastName}}
+                            Last name: <span [innerHtml]="result.lastName"></span>
                         </div>
                         <div class="details-row">
-                            <b>Education:</b> {{result.education}}
+                            Education: <span [innerHtml]="result.education"></span>
+                        </div>
+                        <div class="details-row">
+                            Letter text: <span [innerHtml]="result.letterText"></span>
                         </div>
                         <div class="download">
                             <span></span>
