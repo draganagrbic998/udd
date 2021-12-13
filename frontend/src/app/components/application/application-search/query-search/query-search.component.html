@@ -21,10 +21,36 @@
       </mat-select>
       <mat-error> Field is required! </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field *ngIf="!educationLevel">
       <mat-label>Value</mat-label>
       <input matInput formControlName="value" placeholder="Enter value" />
-      <mat-error> Value is required! </mat-error>
+      <mat-error>Value is required! </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="educationLevel">
+      <mat-label>Start value</mat-label>
+      <mat-select formControlName="startValue" placeholder="Select start value">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+        <mat-option [value]="4">4</mat-option>
+        <mat-option [value]="5">5</mat-option>
+        <mat-option [value]="6">6</mat-option>
+        <mat-option [value]="7">7</mat-option>
+      </mat-select>
+      <mat-error>Start value is required! </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="educationLevel">
+      <mat-label>End value</mat-label>
+      <mat-select formControlName="endValue" placeholder="Select end value">
+        <mat-option [value]="1">1</mat-option>
+        <mat-option [value]="2">2</mat-option>
+        <mat-option [value]="3">3</mat-option>
+        <mat-option [value]="4">4</mat-option>
+        <mat-option [value]="5">5</mat-option>
+        <mat-option [value]="6">6</mat-option>
+        <mat-option [value]="7">7</mat-option>
+      </mat-select>
+      <mat-error>End value is required! </mat-error>
     </mat-form-field>
   </div>
 </form>

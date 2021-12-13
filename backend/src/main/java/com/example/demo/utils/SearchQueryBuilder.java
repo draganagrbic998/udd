@@ -13,14 +13,20 @@ import com.example.demo.dto.ApplicationSearch;
 public class SearchQueryBuilder {
 
 	public static QueryBuilder build(ApplicationSearch search) {
-		QueryBuilder query1 = QueryBuilders.matchPhraseQuery(search.getQuery1().getField(),
-				search.getQuery1().getValue());
+		QueryBuilder query1 = search.getQuery1().getEndValue() == null
+				? QueryBuilders.matchPhraseQuery(search.getQuery1().getField(), search.getQuery1().getValue())
+				: QueryBuilders.rangeQuery(search.getQuery1().getField())
+						.gte(Integer.parseInt(search.getQuery1().getStartValue()))
+						.lte(Integer.parseInt(search.getQuery1().getEndValue()));
 		if (search.getOperation() == null || search.getQuery2() == null) {
 			return query1;
 		}
 
-		QueryBuilder query2 = QueryBuilders.matchPhraseQuery(search.getQuery2().getField(),
-				search.getQuery2().getValue());
+		QueryBuilder query2 = search.getQuery2().getEndValue() == null
+				? QueryBuilders.matchPhraseQuery(search.getQuery2().getField(), search.getQuery2().getValue())
+				: QueryBuilders.rangeQuery(search.getQuery2().getField())
+						.gte(Integer.parseInt(search.getQuery2().getStartValue()))
+						.lte(Integer.parseInt(search.getQuery2().getEndValue()));
 		BoolQueryBuilder query = QueryBuilders.boolQuery();
 
 		if (search.getOperation().equalsIgnoreCase("and")) {

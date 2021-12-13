@@ -17,6 +17,10 @@ export class QuerySearchComponent implements OnInit {
   @Input() second: boolean;
   form: FormGroup;
 
+  get educationLevel() {
+    return this.form?.value.field === 'educationLevel';
+  }
+
   ngOnInit() {
     const config: FormConfig = {
       field: {
@@ -25,6 +29,8 @@ export class QuerySearchComponent implements OnInit {
       value: {
         validation: 'required'
       },
+      startValue: {},
+      endValue: {}
     }
     if (this.second) {
       config.operation = {
