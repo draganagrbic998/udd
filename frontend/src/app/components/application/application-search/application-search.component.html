@@ -44,21 +44,21 @@
           </div>
           <div class="description">
             <div class="details-row">
-              First name: <span [innerHtml]="result.firstName"></span>
+              First name: <span>{{result.firstName}}</span>
             </div>
             <div class="details-row">
-              Last name: <span [innerHtml]="result.lastName"></span>
+              Last name: <span>{{result.lastName}}</span>
             </div>
             <div class="details-row">
-              Education: <span [innerHtml]="result.education"></span>
+              Education: <span>{{result.education}}</span>
             </div>
             <div class="details-row">
-              Education level: <span [innerHtml]="result.educationLevel"></span>
+              Education level: <span>{{result.educationLevel}}</span>
             </div>
-            <div class="details-row">
+            <div class="details-row" *ngIf="result.cvText">
               CV text: <span [innerHtml]="result.cvText"></span>
             </div>
-            <div class="details-row">
+            <div class="details-row" *ngIf="result.letterText">
               Letter text: <span [innerHtml]="result.letterText"></span>
             </div>
             <div class="download">

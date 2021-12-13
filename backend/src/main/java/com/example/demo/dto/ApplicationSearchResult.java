@@ -39,11 +39,8 @@ public class ApplicationSearchResult {
 
 	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
 		this(indexUnit);
-		firstName = highlights.getOrDefault("firstName", List.of(firstName)).get(0);
-		lastName = highlights.getOrDefault("lastName", List.of(lastName)).get(0);
-		education = highlights.getOrDefault("education", List.of(education)).get(0);
-		cvText = highlights.getOrDefault("cvText", List.of(cvText)).get(0);
-		letterText = highlights.getOrDefault("letterText", List.of(letterText)).get(0);
+		cvText = highlights.getOrDefault("cvText", List.of("")).get(0);
+		letterText = highlights.getOrDefault("letterText", List.of("")).get(0);
 	}
 
 }

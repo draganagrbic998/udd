@@ -13,7 +13,7 @@ import com.example.demo.dto.ApplicationSearch;
 public class SearchQueryBuilder {
 
 	public static QueryBuilder build(ApplicationSearch search) {
-		QueryBuilder query1 = search.getQuery1().getEndValue() == null
+		QueryBuilder query1 = !search.getQuery1().getField().equals("educationLevel")
 				? QueryBuilders.matchPhraseQuery(search.getQuery1().getField(), search.getQuery1().getValue())
 				: QueryBuilders.rangeQuery(search.getQuery1().getField())
 						.gte(Integer.parseInt(search.getQuery1().getStartValue()))
@@ -22,7 +22,7 @@ public class SearchQueryBuilder {
 			return query1;
 		}
 
-		QueryBuilder query2 = search.getQuery2().getEndValue() == null
+		QueryBuilder query2 = !search.getQuery1().getField().equals("educationLevel")
 				? QueryBuilders.matchPhraseQuery(search.getQuery2().getField(), search.getQuery2().getValue())
 				: QueryBuilders.rangeQuery(search.getQuery2().getField())
 						.gte(Integer.parseInt(search.getQuery2().getStartValue()))

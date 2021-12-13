@@ -56,6 +56,7 @@ public class ApplicationController {
 		try {
 			return ResponseEntity.ok(service.upload(upload));
 		} catch (Exception e) {
+			e.printStackTrace();
 			return ResponseEntity.badRequest().build();
 		}
 	}

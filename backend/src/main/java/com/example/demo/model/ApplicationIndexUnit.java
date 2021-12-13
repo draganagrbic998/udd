@@ -28,7 +28,7 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = true, store = true)
 	private String education;
 
-	@Field(type = FieldType.Integer_Range, index = true, store = true)
+	@Field(type = FieldType.Integer, index = true, store = true)
 	private Integer educationLevel;
 
 	@Field(type = FieldType.Text, index = true, store = true)

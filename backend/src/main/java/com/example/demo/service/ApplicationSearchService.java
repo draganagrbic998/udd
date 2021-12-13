@@ -24,12 +24,10 @@ public class ApplicationSearchService {
 	public List<ApplicationSearchResult> search(QueryBuilder query) {
 		return template
 				.search(new NativeSearchQueryBuilder().withQuery(query)
-						.withHighlightFields(new HighlightBuilder.Field("firstName"),
-								new HighlightBuilder.Field("lastName"), new HighlightBuilder.Field("education"),
-								new HighlightBuilder.Field("cvText"), new HighlightBuilder.Field("letterText"))
+						.withHighlightFields(new HighlightBuilder.Field("cvText"),
+								new HighlightBuilder.Field("letterText"))
 						.build(), ApplicationIndexUnit.class)
-				.stream()
-				.map(res -> new ApplicationSearchResult(res.getContent(), res.getHighlightFields()))
+				.stream().map(res -> new ApplicationSearchResult(res.getContent(), res.getHighlightFields()))
 				.collect(Collectors.toList());
 	}
 
