@@ -28,14 +28,17 @@ public class ApplicationIndexUnit {
 	@Field(type = FieldType.Text, index = true, store = true)
 	private String education;
 
+	@Field(type = FieldType.Integer_Range, index = true, store = true)
+	private Integer educationLevel;
+
+	@Field(type = FieldType.Text, index = true, store = true)
+	private String cvText;
+
 	@Field(type = FieldType.Text, index = true, store = true)
 	private String letterText;
 
 	@GeoPointField
 	private GeoPoint location;
-
-	@Field(type = FieldType.Text, index = false, store = true)
-	private String adTitle;
 
 	@Id
 	@Field(type = FieldType.Text, index = false, store = true)
@@ -43,5 +46,8 @@ public class ApplicationIndexUnit {
 
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String letterLocation;
+
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String adTitle;
 
 }

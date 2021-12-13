@@ -6,18 +6,18 @@ import { Auth } from '../models/auth';
 })
 export class StorageService {
 
-  private readonly AUTH_KEY = 'AUTH';
+  private readonly KEY = 'AUTH';
 
   getAuth(): Auth {
-    return JSON.parse(localStorage.getItem(this.AUTH_KEY));
+    return JSON.parse(localStorage.getItem(this.KEY));
   }
 
   setAuth(auth: Auth) {
-    localStorage.setItem(this.AUTH_KEY, JSON.stringify(auth));
+    localStorage.setItem(this.KEY, JSON.stringify(auth));
   }
 
   removeAuth() {
-    localStorage.removeItem(this.AUTH_KEY);
+    localStorage.removeItem(this.KEY);
   }
 
 }

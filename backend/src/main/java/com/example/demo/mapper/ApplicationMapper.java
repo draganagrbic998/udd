@@ -14,16 +14,17 @@ import lombok.AllArgsConstructor;
 @Component
 public class ApplicationMapper {
 
-	private final AdvertisementRepository adRepo;
+	private final AdvertisementRepository repo;
 
 	public Application map(ApplicationUpload upload) {
 		Application model = new Application();
-		model.setAdvertisement(adRepo.findById(upload.getAdvertisementId()).get());
+		model.setAdvertisement(repo.findById(upload.getAdvertisementId()).get());
 		model.setFirstName(upload.getFirstName());
 		model.setLastName(upload.getLastName());
+		model.setEducation(upload.getEducation());
+		model.setEducationLevel(upload.getEducationLevel());
 		model.setEmail(upload.getEmail());
 		model.setAddress(upload.getAddress());
-		model.setEducation(upload.getEducation());
 		return model;
 	}
 
@@ -32,8 +33,9 @@ public class ApplicationMapper {
 		indexUnit.setFirstName(upload.getFirstName());
 		indexUnit.setLastName(upload.getLastName());
 		indexUnit.setEducation(upload.getEducation());
+		indexUnit.setEducationLevel(upload.getEducationLevel());
 		indexUnit.setLocation(new GeoPoint(upload.getLat(), upload.getLng()));
-		indexUnit.setAdTitle(adRepo.findById(upload.getAdvertisementId()).get().getTitle());
+		indexUnit.setAdTitle(repo.findById(upload.getAdvertisementId()).get().getTitle());
 		return indexUnit;
 	}
 

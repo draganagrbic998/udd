@@ -1,11 +1,11 @@
 export interface Auth {
     email: string;
     password: string;
-    role: Role;
+    role: RoleAuth;
     token: string;
 }
 
-export enum Role {
+export enum RoleAuth {
     KANDIDAT = 'kandidat',
     TEHNICKO_LICE = 'tehnicko lice',
     HR_LICE = 'hr lice',

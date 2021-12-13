@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -42,15 +41,12 @@ public class User implements UserDetails {
 	@NotBlank
 	private String email;
 
-	@Column
 	@NotBlank
 	private String password;
 
 	@Override
 	public Collection<Role> getAuthorities() {
-		List<Role> roles = new ArrayList<>();
-		roles.add(role);
-		return roles;
+		return List.of(role);
 	}
 
 	@Override

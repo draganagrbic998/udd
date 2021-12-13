@@ -72,4 +72,11 @@ public class ApplicationController {
 		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.build(search)));
 	}
 
+	@GetMapping("/form_access")
+	@PreAuthorize("hasAuthority('kandidat')")
+	public ResponseEntity<Void> formAccess() {
+		service.announceFormAccess();
+		return ResponseEntity.noContent().build();
+	}
+
 }

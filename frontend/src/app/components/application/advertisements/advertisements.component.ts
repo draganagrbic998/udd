@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Advertisement } from 'src/app/models/advertisement';
-import { AdvertisementsService } from 'src/app/services/advertisements.service';
+import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { Route } from 'src/app/utils/route';
 
 @Component({
@@ -12,7 +12,7 @@ import { Route } from 'src/app/utils/route';
 export class AdvertisementsComponent implements OnInit {
 
   constructor(
-    private advertisementsService: AdvertisementsService,
+    private advertisementsService: AdvertisementService,
     private router: Router
   ) { }
 

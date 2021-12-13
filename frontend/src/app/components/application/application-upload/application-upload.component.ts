@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationUpload } from 'src/app/models/application';
@@ -11,7 +11,7 @@ import { Route } from 'src/app/utils/route';
   selector: 'app-application-upload',
   template: `<app-form title="Upload Application" [config]="config" [pending]="pending" [style]="style" (submit)="upload($event)"></app-form>`
 })
-export class ApplicationUploadComponent {
+export class ApplicationUploadComponent implements OnInit {
 
   constructor(
     private applicationService: ApplicationService,
@@ -38,6 +38,11 @@ export class ApplicationUploadComponent {
     education: {
       validation: 'required'
     },
+    educationLevel: {
+      validation: 'required',
+      type: 'select',
+      options: ['1', '2', '3', '4', '5', '6', '7']
+    },
     cvFile: {
       type: 'file',
       validation: 'required'
@@ -50,6 +55,10 @@ export class ApplicationUploadComponent {
   style: FormStyle = {
     width: '550px',
     'margin-top': '100px'
+  }
+
+  ngOnInit() {
+    this.applicationService.announceFormAccess().subscribe(() => { });
   }
 
   async upload(upload: ApplicationUpload) {

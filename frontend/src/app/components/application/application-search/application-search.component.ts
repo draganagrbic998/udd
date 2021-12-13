@@ -54,7 +54,7 @@ export class ApplicationSearchComponent {
   }
 
   async downloadFile(cv: boolean, fileName: string) {
-    const res = await this.applicationService.downloadFile(cv, fileName).toPromise();
+    const res = await this.applicationService.download(cv, fileName).toPromise();
 
     const url = window.URL.createObjectURL(res)
     const a = document.createElement('a')

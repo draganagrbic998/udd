@@ -12,26 +12,30 @@ export class ApplicationService {
     private http: HttpClient
   ) { }
 
-  private readonly APPLICATIONS_API = `${environment.apiUrl}/applications`;
+  private readonly API = `${environment.apiUrl}/applications`;
 
   upload(upload: ApplicationUpload) {
     const data = new FormData();
     for (const field in upload) {
       data.append(field, upload[field]);
     }
-    return this.http.post<Application>(this.APPLICATIONS_API, data);
+    return this.http.post<Application>(this.API, data);
   }
 
-  downloadFile(cv: boolean, fileName: string) {
-    return this.http.get<Blob>(`${this.APPLICATIONS_API}/${cv ? 'cv' : 'letter'}/${fileName}`, { responseType: 'blob' as 'json' });
+  download(cv: boolean, fileName: string) {
+    return this.http.get<Blob>(`${this.API}/${cv ? 'cv' : 'letter'}/${fileName}`, { responseType: 'blob' as 'json' });
   }
 
   search(search: ApplicationSearch) {
-    return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/search`, search);
+    return this.http.post<ApplicationSearchResult[]>(`${this.API}/search`, search);
   }
 
   geoSearch(search: ApplicationGeoSearch) {
-    return this.http.post<ApplicationSearchResult[]>(`${this.APPLICATIONS_API}/geo_search`, search);
+    return this.http.post<ApplicationSearchResult[]>(`${this.API}/geo_search`, search);
+  }
+
+  announceFormAccess() {
+    return this.http.get<void>(`${this.API}/form_access`);
   }
 
 }

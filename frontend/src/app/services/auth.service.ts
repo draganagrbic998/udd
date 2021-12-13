@@ -12,10 +12,10 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  private readonly AUTH_API = `${environment.apiUrl}/auth`;
+  private readonly API = `${environment.apiUrl}/auth`;
 
   login(auth: Auth) {
-    return this.http.post<Auth>(this.AUTH_API, auth);
+    return this.http.post<Auth>(this.API, auth);
   }
 
 }

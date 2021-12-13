@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Auth, Role } from 'src/app/models/auth';
+import { Auth, RoleAuth } from 'src/app/models/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormConfig, FormStyle } from 'src/app/utils/form';
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.pending = false;
       this.storageService.setAuth(res);
 
-      if (res.role === Role.KANDIDAT) {
+      if (res.role === RoleAuth.KANDIDAT) {
         this.router.navigate([Route.ADVERTISEMENTS])
       } else {
         this.router.navigate([Route.APPLICATION_SEARCH])

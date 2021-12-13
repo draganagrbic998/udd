@@ -1,58 +1,84 @@
 <div class="root">
-    <div class="search-forms">
-        <mat-card class="mat-elevation-z24">
-            <mat-card-content>
-                <h1>Common Search</h1>
-                <app-query-search #query1></app-query-search>
-                <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            <span class="second-query">Second query</span>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <app-query-search #query2 [second]="true"></app-query-search>
-                </mat-expansion-panel>
-                <div class="center">
-                    <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">Submit</button>
-                    <app-spinner *ngIf="searchPending"></app-spinner>
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-        <app-geo-search [pending]="geoSearchPending" (search)="geoSearch($event)"></app-geo-search>
-    </div>
-
-    <div class="search-results">
-        <div *ngFor="let result of searchResults" class="search-result mat-elevation-z24">
-            <mat-card>
-                <mat-card-content>
-                    <div class="title">
-                        <span>{{result.adTitle}}</span>
-                    </div>
-                    <div class="description">
-                        <div class="details-row">
-                            First name: <span [innerHtml]="result.firstName"></span>
-                        </div>
-                        <div class="details-row">
-                            Last name: <span [innerHtml]="result.lastName"></span>
-                        </div>
-                        <div class="details-row">
-                            Education: <span [innerHtml]="result.education"></span>
-                        </div>
-                        <div class="details-row">
-                            Letter text: <span [innerHtml]="result.letterText"></span>
-                        </div>
-                        <div class="download">
-                            <span></span>
-                            <span>
-                                <a routerLink="./" (click)="downloadFile(true, result.cvLocation)">Download CV</a>
-                                <a routerLink="./" (click)="downloadFile(false, result.letterLocation)">Download
-                                    Letter</a>
-                            </span>
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+  <div class="search-forms">
+    <mat-card class="mat-elevation-z24">
+      <mat-card-content>
+        <h1>Common Search</h1>
+        <app-query-search #query1></app-query-search>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="second-query">Second query</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-query-search #query2 [second]="true"></app-query-search>
+        </mat-expansion-panel>
+        <div class="center">
+          <button
+            *ngIf="!searchPending"
+            mat-raised-button
+            color="primary"
+            (click)="search()"
+          >
+            Submit
+          </button>
+          <app-spinner *ngIf="searchPending"></app-spinner>
         </div>
+      </mat-card-content>
+    </mat-card>
+
+    <app-geo-search
+      [pending]="geoSearchPending"
+      (search)="geoSearch($event)"
+    ></app-geo-search>
+  </div>
+
+  <div class="search-results">
+    <div
+      *ngFor="let result of searchResults"
+      class="search-result mat-elevation-z24"
+    >
+      <mat-card>
+        <mat-card-content>
+          <div class="title">
+            <span>{{ result.adTitle }}</span>
+          </div>
+          <div class="description">
+            <div class="details-row">
+              First name: <span [innerHtml]="result.firstName"></span>
+            </div>
+            <div class="details-row">
+              Last name: <span [innerHtml]="result.lastName"></span>
+            </div>
+            <div class="details-row">
+              Education: <span [innerHtml]="result.education"></span>
+            </div>
+            <div class="details-row">
+              Education level: <span [innerHtml]="result.educationLevel"></span>
+            </div>
+            <div class="details-row">
+              CV text: <span [innerHtml]="result.cvText"></span>
+            </div>
+            <div class="details-row">
+              Letter text: <span [innerHtml]="result.letterText"></span>
+            </div>
+            <div class="download">
+              <span></span>
+              <span>
+                <a
+                  routerLink="./"
+                  (click)="downloadFile(true, result.cvLocation)"
+                  >Download CV</a
+                >
+                <a
+                  routerLink="./"
+                  (click)="downloadFile(false, result.letterLocation)"
+                  >Download Letter</a
+                >
+              </span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
+  </div>
 </div>

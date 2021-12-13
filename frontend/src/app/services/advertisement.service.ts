@@ -6,16 +6,16 @@ import { Advertisement } from '../models/advertisement';
 @Injectable({
   providedIn: 'root'
 })
-export class AdvertisementsService {
+export class AdvertisementService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  private readonly ADVERTISEMENTS_API = `${environment.apiUrl}/advertisements`;
+  private readonly API = `${environment.apiUrl}/advertisements`;
 
   read() {
-    return this.http.get<Advertisement[]>(this.ADVERTISEMENTS_API);
+    return this.http.get<Advertisement[]>(this.API);
   }
 
 }

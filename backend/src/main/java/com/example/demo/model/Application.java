@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,32 +28,28 @@ public class Application {
 	@NotNull
 	private Advertisement advertisement;
 
-	@Column
 	@NotBlank
 	private String firstName;
 
-	@Column
 	@NotBlank
 	private String lastName;
 
-	@Column
-	@NotBlank
-	private String email;
-
-	@Column
-	@NotBlank
-	private String address;
-
-	@Column
 	@NotBlank
 	private String education;
 
-	@Column
+	@NotNull
+	private Integer educationLevel;
+
 	@NotBlank
 	private String cvLocation;
 
-	@Column
 	@NotBlank
 	private String letterLocation;
+
+	@NotBlank
+	private String email;
+
+	@NotBlank
+	private String address;
 
 }

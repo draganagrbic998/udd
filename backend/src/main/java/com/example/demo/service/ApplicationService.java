@@ -10,6 +10,7 @@ import com.example.demo.model.Application;
 import com.example.demo.model.ApplicationIndexUnit;
 import com.example.demo.repository.ApplicationIndexRepository;
 import com.example.demo.repository.ApplicationRepository;
+import com.example.demo.utils.CustomLogger;
 import com.example.demo.utils.PDFHandler;
 
 import lombok.AllArgsConstructor;
@@ -22,8 +23,11 @@ public class ApplicationService {
 	private final ApplicationIndexRepository indexRepo;
 	private final ApplicationMapper mapper;
 	private final FileService fileService;
+	private final CustomLogger logger;
 
 	public Application upload(ApplicationUpload upload) throws IOException {
+		logger.storeApplicationSubmitLog();
+
 		Application model = mapper.map(upload);
 		ApplicationIndexUnit indexUnit = mapper.mapToIndexUnit(upload);
 
@@ -35,10 +39,15 @@ public class ApplicationService {
 
 		indexUnit.setCvLocation(cvLocation);
 		indexUnit.setLetterLocation(letterLocation);
+		indexUnit.setCvText(PDFHandler.parse(cvLocation));
 		indexUnit.setLetterText(PDFHandler.parse(letterLocation));
 
 		indexRepo.save(indexUnit);
 		return repo.save(model);
+	}
+
+	public void announceFormAccess() {
+		logger.storeApplicationFormAccessLog();
 	}
 
 }
