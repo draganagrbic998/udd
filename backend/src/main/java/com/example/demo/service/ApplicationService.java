@@ -24,6 +24,7 @@ public class ApplicationService {
 	private final ApplicationMapper mapper;
 	private final FileService fileService;
 	private final CustomLogger logger;
+	private final UserService userService;
 
 	public Application upload(ApplicationUpload upload) throws IOException {
 		logger.storeApplicationSubmitLog();
@@ -47,7 +48,8 @@ public class ApplicationService {
 	}
 
 	public void announceFormAccess() {
-		logger.storeApplicationFormAccessLog();
+		logger.storeApplicationFormAccessLog(userService.getLoggedInUser().getLat(),
+				userService.getLoggedInUser().getLng());
 	}
 
 }

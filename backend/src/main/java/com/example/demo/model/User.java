@@ -44,6 +44,12 @@ public class User implements UserDetails {
 	@NotBlank
 	private String password;
 
+	@NotNull
+	private Double lat;
+
+	@NotNull
+	private Double lng;
+
 	@Override
 	public Collection<Role> getAuthorities() {
 		return List.of(role);
