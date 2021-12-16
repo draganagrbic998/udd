@@ -44,6 +44,9 @@ public class User implements UserDetails {
 	@NotBlank
 	private String password;
 
+	@NotBlank
+	private String city;
+
 	@NotNull
 	private Double lat;
 

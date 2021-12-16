@@ -10,8 +10,8 @@ public class CustomLogger {
 	private static final Logger LOGGER1 = LoggerFactory.getLogger("logger-1");
 	private static final Logger LOGGER2 = LoggerFactory.getLogger("logger-2");
 
-	public void storeApplicationFormAccessLog(Double lat, Double lng) {
-		LOGGER1.info("lat: " + lat + ", lng: " + lng + " coordinates");
+	public void storeApplicationFormAccessLog(String city, Double lat, Double lng) {
+		LOGGER1.info("city: " + city + ", lat: " + lat + ", lng: " + lng);
 	}
 
 	public void storeApplicationSubmitLog() {

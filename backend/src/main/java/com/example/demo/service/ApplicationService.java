@@ -48,8 +48,8 @@ public class ApplicationService {
 	}
 
 	public void announceFormAccess() {
-		logger.storeApplicationFormAccessLog(userService.getLoggedInUser().getLat(),
-				userService.getLoggedInUser().getLng());
+		logger.storeApplicationFormAccessLog(userService.getLoggedInUser().getCity(),
+				userService.getLoggedInUser().getLat(), userService.getLoggedInUser().getLng());
 	}
 
 }
