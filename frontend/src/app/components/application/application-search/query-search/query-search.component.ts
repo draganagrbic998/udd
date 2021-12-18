@@ -1,43 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormService } from 'src/app/services/form.service';
-import { FormConfig } from 'src/app/utils/form';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SimpleQuery } from 'src/app/models/application';
 
 @Component({
   selector: 'app-query-search',
-  templateUrl: './query-search.component.html'
+  templateUrl: './query-search.component.html',
+  styleUrls: ['./query-search.component.scss']
 })
-export class QuerySearchComponent implements OnInit {
+export class QuerySearchComponent  {
 
-  constructor(
-    private formService: FormService
-  ) { }
-
+  @Input() query: SimpleQuery;
+  @Input() first: boolean;
   @Input() pending: boolean;
-  @Input() second: boolean;
-  form: FormGroup;
+  @Output() removeQuery = new EventEmitter<void>();
 
   get educationLevel() {
-    return this.form?.value.field === 'educationLevel';
-  }
-
-  ngOnInit() {
-    const config: FormConfig = {
-      field: {
-        validation: 'required'
-      },
-      value: {
-        validation: 'required'
-      },
-      startValue: {},
-      endValue: {}
-    }
-    if (this.second) {
-      config.operation = {
-        validation: 'required'
-      }
-    }
-    this.form = this.formService.build(config);
+    return this.query.field === 'educationLevel';
   }
 
 }

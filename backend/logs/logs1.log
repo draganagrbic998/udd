@@ -3,3 +3,5 @@
 16-12-2021 14:11:50.733 [http-nio-8080-exec-6] INFO  logger-1.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
 16-12-2021 14:12:02.744 [http-nio-8080-exec-3] INFO  logger-1.storeApplicationFormAccessLog - city: Paris, lat: 48.864716, lng: 2.349014
 16-12-2021 14:13:59.983 [http-nio-8080-exec-6] INFO  logger-1.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+18-12-2021 15:34:45.947 [http-nio-8080-exec-6] INFO  logger-1.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+18-12-2021 15:41:51.601 [http-nio-8080-exec-6] INFO  logger-1.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549

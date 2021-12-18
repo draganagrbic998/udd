@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { QuerySearchComponent } from './query-search/query-search.component';
+import { Component } from '@angular/core';
 import { ApplicationService } from 'src/app/services/application.service';
-import { ApplicationGeoSearch, ApplicationSearch, ApplicationSearchResult } from 'src/app/models/application';
+import { ApplicationGeoSearch, ApplicationSearchResult, SimpleQuery } from 'src/app/models/application';
 
 @Component({
   selector: 'app-application-search',
@@ -14,28 +13,28 @@ export class ApplicationSearchComponent {
     private applicationService: ApplicationService
   ) { }
 
-  @ViewChild('query1') query1: QuerySearchComponent;
-  @ViewChild('query2') query2: QuerySearchComponent;
+  queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1 }]
+  operator: 'and' | 'or' = 'and'
+
+  addQuery() {
+    this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1 })
+  }
+
+  removeQuery(index: number) {
+    this.queries.splice(index, 1);
+  }
 
   searchPending = false;
   geoSearchPending = false;
   searchResults: ApplicationSearchResult[];
 
   async search() {
-    if (this.query1.form.invalid) {
-      return;
+    if (this.queries.find(query => query.field !== 'educationLevel' && !query.value.trim().length)) {
+      return
     }
-    const search: ApplicationSearch = {
-      query1: this.query1.form.value
-    }
-    if (this.query2.form.valid) {
-      search.operation = this.query2.form.value.operation;
-      search.query2 = this.query2.form.value;
-    }
-
     this.searchPending = true;
     try {
-      this.searchResults = await this.applicationService.search(search).toPromise();
+      this.searchResults = await this.applicationService.search({ queries: this.queries, operator: this.operator }).toPromise();
       this.searchPending = false;
     } catch {
       this.searchPending = false;

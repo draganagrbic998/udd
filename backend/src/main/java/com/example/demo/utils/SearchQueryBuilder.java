@@ -3,47 +3,39 @@ package com.example.demo.utils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.Query;
 
 import com.example.demo.dto.ApplicationGeoSearch;
 import com.example.demo.dto.ApplicationSearch;
 
 public class SearchQueryBuilder {
 
-	public static QueryBuilder build(ApplicationSearch search) {
-		QueryBuilder query1 = !search.getQuery1().getField().equals("educationLevel")
-				? QueryBuilders.matchPhraseQuery(search.getQuery1().getField(), search.getQuery1().getValue())
-				: QueryBuilders.rangeQuery(search.getQuery1().getField())
-						.from(Integer.parseInt(search.getQuery1().getStartValue()))
-						.to(Integer.parseInt(search.getQuery1().getEndValue()));
-		if (search.getOperation() == null || search.getQuery2() == null) {
-			return query1;
-		}
-
-		QueryBuilder query2 = !search.getQuery1().getField().equals("educationLevel")
-				? QueryBuilders.matchPhraseQuery(search.getQuery2().getField(), search.getQuery2().getValue())
-				: QueryBuilders.rangeQuery(search.getQuery2().getField())
-						.from(Integer.parseInt(search.getQuery2().getStartValue()))
-						.to(Integer.parseInt(search.getQuery2().getEndValue()));
+	public static Query search(ApplicationSearch search) {
 		BoolQueryBuilder query = QueryBuilders.boolQuery();
+		search.getQueries().forEach(sq -> {
+			QueryBuilder simpleQuery = !sq.getField().equals("educationLevel")
+					? sq.getValue().startsWith("\"") && sq.getValue().endsWith("\"")
+							? QueryBuilders.matchPhraseQuery(sq.getField(), sq.getValue())
+							: QueryBuilders.matchQuery(sq.getField(), sq.getValue())
+					: QueryBuilders.rangeQuery(sq.getField()).from(sq.getStartValue()).to(sq.getEndValue());
+			if (search.getOperator().equalsIgnoreCase("and")) {
+				query.must(simpleQuery);
+			} else {
+				query.should(simpleQuery);
+			}
+		});
 
-		if (search.getOperation().equalsIgnoreCase("and")) {
-			query.must(query1);
-			query.must(query2);
-		} else if (search.getOperation().equalsIgnoreCase("or")) {
-			query.should(query1);
-			query.should(query2);
-		} else {
-			query.must(query1);
-			query.mustNot(query2);
-		}
-		return query;
-
+		return new NativeSearchQueryBuilder().withQuery(query)
+				.withHighlightFields(new HighlightBuilder.Field("cvText"), new HighlightBuilder.Field("letterText"))
+				.build();
 	}
 
-	public static CriteriaQuery build(ApplicationGeoSearch search) {
+	public static Query geoSearch(ApplicationGeoSearch search) {
 		return new CriteriaQuery(new Criteria("location").within(new GeoPoint(search.getLat(), search.getLng()),
 				search.getDistance() + search.getUnit()));
 	}

@@ -28,9 +28,8 @@ export interface Application {
 }
 
 export interface ApplicationSearch {
-    query1: SimpleQuery,
-    operation?: 'and' | 'or' | 'not',
-    query2?: SimpleQuery,
+    queries: SimpleQuery[]
+    operator: 'and' | 'or'
 }
 
 export interface ApplicationGeoSearch {
@@ -52,7 +51,9 @@ export interface ApplicationSearchResult {
     adTitle: string;
 }
 
-interface SimpleQuery {
+export interface SimpleQuery {
     field: 'firstName' | 'lastName' | 'education' | 'educationLevel' | 'cvText' | 'letterText',
     value: string
+    startValue: number
+    endValue: number
 }

@@ -29,8 +29,6 @@ public class ApplicationSearchResult {
 		lastName = indexUnit.getLastName();
 		education = indexUnit.getEducation();
 		educationLevel = indexUnit.getEducationLevel();
-		cvText = indexUnit.getCvText();
-		letterText = indexUnit.getLetterText();
 
 		cvLocation = indexUnit.getCvLocation();
 		letterLocation = indexUnit.getLetterLocation();

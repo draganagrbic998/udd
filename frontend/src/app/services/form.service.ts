@@ -14,7 +14,7 @@ export class FormService {
   build(config: FormConfig) {
     const data = {}
     for (const control in config) {
-      data[control] = [config[control].validation ? '' : 1, this.buildValidation(config[control].validation)]
+      data[control] = ['', this.buildValidation(config[control].validation)]
     }
     return this.builder.group(data);
   }

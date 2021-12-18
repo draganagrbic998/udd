@@ -1,17 +1,8 @@
-<form [formGroup]="form" (submit)="$event.stopPropagation()">
-  <div [class.disabled]="pending">
-    <mat-form-field *ngIf="second">
-      <mat-label>Operation</mat-label>
-      <mat-select formControlName="operation" placeholder="Select operation">
-        <mat-option value="and">AND</mat-option>
-        <mat-option value="or">OR</mat-option>
-        <mat-option value="not">NOT</mat-option>
-      </mat-select>
-      <mat-error> Operation is required! </mat-error>
-    </mat-form-field>
+<div class="root" [class.disabled]="pending">
+  <div class="form">
     <mat-form-field>
       <mat-label>Field</mat-label>
-      <mat-select formControlName="field" placeholder="Select field">
+      <mat-select [(ngModel)]="query.field" placeholder="Select field">
         <mat-option value="firstName">First name</mat-option>
         <mat-option value="lastName">Last name</mat-option>
         <mat-option value="education">Education</mat-option>
@@ -19,16 +10,17 @@
         <mat-option value="cvText">CV text</mat-option>
         <mat-option value="letterText">Letter text</mat-option>
       </mat-select>
-      <mat-error> Field is required! </mat-error>
     </mat-form-field>
     <mat-form-field *ngIf="!educationLevel">
       <mat-label>Value</mat-label>
-      <input matInput formControlName="value" placeholder="Enter value" />
-      <mat-error>Value is required! </mat-error>
+      <input [(ngModel)]="query.value" matInput placeholder="Enter value" />
     </mat-form-field>
     <mat-form-field *ngIf="educationLevel">
       <mat-label>Start value</mat-label>
-      <mat-select formControlName="startValue" placeholder="Select start value">
+      <mat-select
+        [(ngModel)]="query.startValue"
+        placeholder="Select start value"
+      >
         <mat-option [value]="1">1</mat-option>
         <mat-option [value]="2">2</mat-option>
         <mat-option [value]="3">3</mat-option>
@@ -37,11 +29,10 @@
         <mat-option [value]="6">6</mat-option>
         <mat-option [value]="7">7</mat-option>
       </mat-select>
-      <mat-error>Start value is required! </mat-error>
     </mat-form-field>
     <mat-form-field *ngIf="educationLevel">
       <mat-label>End value</mat-label>
-      <mat-select formControlName="endValue" placeholder="Select end value">
+      <mat-select [(ngModel)]="query.endValue" placeholder="Select end value">
         <mat-option [value]="1">1</mat-option>
         <mat-option [value]="2">2</mat-option>
         <mat-option [value]="3">3</mat-option>
@@ -50,7 +41,14 @@
         <mat-option [value]="6">6</mat-option>
         <mat-option [value]="7">7</mat-option>
       </mat-select>
-      <mat-error>End value is required! </mat-error>
     </mat-form-field>
   </div>
-</form>
+  <button
+    *ngIf="!first"
+    mat-icon-button
+    color="warn"
+    (click)="removeQuery.emit()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

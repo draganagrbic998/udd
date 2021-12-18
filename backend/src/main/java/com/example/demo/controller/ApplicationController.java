@@ -19,7 +19,6 @@ import com.example.demo.dto.ApplicationSearch;
 import com.example.demo.dto.ApplicationSearchResult;
 import com.example.demo.dto.ApplicationUpload;
 import com.example.demo.model.Application;
-import com.example.demo.service.ApplicationSearchService;
 import com.example.demo.service.ApplicationService;
 import com.example.demo.service.FileService;
 import com.example.demo.utils.SearchQueryBuilder;
@@ -32,7 +31,6 @@ import lombok.AllArgsConstructor;
 public class ApplicationController {
 
 	private final ApplicationService service;
-	private final ApplicationSearchService searchService;
 
 	@GetMapping("/cv/{fileName}")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
@@ -64,13 +62,13 @@ public class ApplicationController {
 	@PostMapping("/search")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch search) {
-		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.build(search)));
+		return ResponseEntity.ok(service.search(SearchQueryBuilder.search(search)));
 	}
 
 	@PostMapping("/geo_search")
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationGeoSearch search) {
-		return ResponseEntity.ok(searchService.search(SearchQueryBuilder.build(search)));
+		return ResponseEntity.ok(service.search(SearchQueryBuilder.geoSearch(search)));
 	}
 
 	@GetMapping("/form_access")

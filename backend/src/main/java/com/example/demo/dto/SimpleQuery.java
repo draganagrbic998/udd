@@ -11,7 +11,7 @@ public class SimpleQuery {
 
 	private String field;
 	private String value;
-	private String startValue;
-	private String endValue;
+	private Integer startValue;
+	private Integer endValue;
 
 }

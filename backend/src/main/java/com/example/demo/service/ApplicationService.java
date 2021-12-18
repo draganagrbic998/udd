@@ -1,9 +1,14 @@
 package com.example.demo.service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.ApplicationSearchResult;
 import com.example.demo.dto.ApplicationUpload;
 import com.example.demo.mapper.ApplicationMapper;
 import com.example.demo.model.Application;
@@ -25,6 +30,7 @@ public class ApplicationService {
 	private final FileService fileService;
 	private final CustomLogger logger;
 	private final UserService userService;
+	private final ElasticsearchRestTemplate template;
 
 	public Application upload(ApplicationUpload upload) throws IOException {
 		logger.storeApplicationSubmitLog();
@@ -45,6 +51,12 @@ public class ApplicationService {
 
 		indexRepo.save(indexUnit);
 		return repo.save(model);
+	}
+
+	public List<ApplicationSearchResult> search(Query query) {
+		return template.search(query, ApplicationIndexUnit.class).stream()
+				.map(res -> new ApplicationSearchResult(res.getContent(), res.getHighlightFields()))
+				.collect(Collectors.toList());
 	}
 
 	public void announceFormAccess() {
