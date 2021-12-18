@@ -27,6 +27,12 @@ export interface Application {
     address: string;
 }
 
+export interface SimpleQuery {
+    field: 'firstName' | 'lastName' | 'education' | 'educationLevel' | 'cvText' | 'letterText',
+    value: string
+    startValue: number
+    endValue: number
+}
 export interface ApplicationSearch {
     queries: SimpleQuery[]
     operator: 'and' | 'or'
@@ -49,11 +55,4 @@ export interface ApplicationSearchResult {
     cvLocation: string;
     letterLocation: string;
     adTitle: string;
-}
-
-export interface SimpleQuery {
-    field: 'firstName' | 'lastName' | 'education' | 'educationLevel' | 'cvText' | 'letterText',
-    value: string
-    startValue: number
-    endValue: number
 }

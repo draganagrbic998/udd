@@ -3,5 +3,4 @@ export interface Advertisement {
     title: string;
     description: string;
     published: Date;
-    deadline: Date;
 }

@@ -32,22 +32,6 @@ public class ApplicationController {
 
 	private final ApplicationService service;
 
-	@GetMapping("/cv/{fileName}")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<FileSystemResource> downloadCv(@PathVariable String fileName) {
-		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
-	}
-
-	@GetMapping("/letter/{fileName}")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
-	public ResponseEntity<FileSystemResource> downloadLetter(@PathVariable String fileName) {
-		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
-	}
-
 	@PostMapping
 	@PreAuthorize("hasAuthority('kandidat')")
 	public ResponseEntity<Application> upload(@ModelAttribute ApplicationUpload upload) {
@@ -69,6 +53,22 @@ public class ApplicationController {
 	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationGeoSearch search) {
 		return ResponseEntity.ok(service.search(SearchQueryBuilder.geoSearch(search)));
+	}
+
+	@GetMapping("/cv/{fileName}")
+	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
+	public ResponseEntity<FileSystemResource> downloadCv(@PathVariable String fileName) {
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
+	}
+
+	@GetMapping("/letter/{fileName}")
+	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
+	public ResponseEntity<FileSystemResource> downloadLetter(@PathVariable String fileName) {
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+				.body(new FileSystemResource(FileService.RESOURCES_PATH + fileName));
 	}
 
 	@GetMapping("/form_access")

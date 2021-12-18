@@ -20,7 +20,7 @@ const routes: Routes = [
     data: { roles: [RoleAuth.KANDIDAT] }
   },
   {
-    path: `${Route.APPLICATION_UPLOAD}/:advertisementId`,
+    path: `${Route.APPLICATION_UPLOAD}/:${Route.ADVERTISEMENT_ID}`,
     component: ApplicationUploadComponent,
     canActivate: [AuthGuard],
     data: { roles: [RoleAuth.KANDIDAT] }

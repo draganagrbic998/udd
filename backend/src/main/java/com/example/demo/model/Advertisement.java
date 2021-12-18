@@ -31,7 +31,4 @@ public class Advertisement {
 	@NotBlank
 	private Date published;
 
-	@NotBlank
-	private Date deadline;
-
 }

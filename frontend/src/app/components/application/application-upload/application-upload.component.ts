@@ -62,7 +62,7 @@ export class ApplicationUploadComponent implements OnInit {
   }
 
   async upload(upload: ApplicationUpload) {
-    upload.advertisementId = +this.route.snapshot.params.advertisementId
+    upload.advertisementId = +this.route.snapshot.params[Route.ADVERTISEMENT_ID]
     this.pending = true;
 
     try {

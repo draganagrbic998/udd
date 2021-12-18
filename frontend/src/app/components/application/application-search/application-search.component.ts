@@ -13,8 +13,11 @@ export class ApplicationSearchComponent {
     private applicationService: ApplicationService
   ) { }
 
+  searchPending = false;
+  geoSearchPending = false;
   queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1 }]
   operator: 'and' | 'or' = 'and'
+  searchResults: ApplicationSearchResult[];
 
   addQuery() {
     this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1 })
@@ -23,10 +26,6 @@ export class ApplicationSearchComponent {
   removeQuery(index: number) {
     this.queries.splice(index, 1);
   }
-
-  searchPending = false;
-  geoSearchPending = false;
-  searchResults: ApplicationSearchResult[];
 
   async search() {
     if (this.queries.find(query => query.field !== 'educationLevel' && !query.value.trim().length)) {
