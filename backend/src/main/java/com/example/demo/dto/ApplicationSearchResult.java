@@ -24,19 +24,16 @@ public class ApplicationSearchResult {
 	private String letterLocation;
 	private String adTitle;
 
-	public ApplicationSearchResult(ApplicationIndexUnit indexUnit) {
-		firstName = indexUnit.getFirstName();
-		lastName = indexUnit.getLastName();
-		education = indexUnit.getEducation();
-		educationLevel = indexUnit.getEducationLevel();
-
+	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
 		cvLocation = indexUnit.getCvLocation();
 		letterLocation = indexUnit.getLetterLocation();
 		adTitle = indexUnit.getAdTitle();
-	}
 
-	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
-		this(indexUnit);
+		firstName = highlights.getOrDefault("firstName", List.of(indexUnit.getFirstName())).get(0);
+		lastName = highlights.getOrDefault("lastName", List.of(indexUnit.getLastName())).get(0);
+		education = highlights.getOrDefault("education", List.of(indexUnit.getEducation())).get(0);
+		educationLevel = indexUnit.getEducationLevel();
+
 		cvText = highlights.getOrDefault("cvText", List.of("")).get(0);
 		letterText = highlights.getOrDefault("letterText", List.of("")).get(0);
 	}

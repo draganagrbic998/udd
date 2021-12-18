@@ -50,13 +50,13 @@
           </div>
           <div class="description">
             <div class="details-row">
-              First name: <span>{{ result.firstName }}</span>
+              First name: <span [innerHtml]="result.firstName"></span>
             </div>
             <div class="details-row">
-              Last name: <span>{{ result.lastName }}</span>
+              Last name: <span [innerHtml]="result.lastName"></span>
             </div>
             <div class="details-row">
-              Education: <span>{{ result.education }}</span>
+              Education: <span [innerHtml]="result.education"></span>
             </div>
             <div class="details-row">
               Education level: <span>{{ result.educationLevel }}</span>

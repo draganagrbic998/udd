@@ -49,7 +49,7 @@ export interface ApplicationSearchResult {
     firstName: string;
     lastName: string;
     education: string;
-    educationLevel: string;
+    educationLevel: number;
     cvText: string;
     letterText: string;
     cvLocation: string;
