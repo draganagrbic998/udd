@@ -14,13 +14,13 @@ public class ApplicationUpload {
 	private Long advertisementId;
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String address;
 	private String education;
 	private Integer educationLevel;
 	private MultipartFile cvFile;
 	private MultipartFile letterFile;
 	private double lat;
 	private double lng;
-	private String email;
-	private String address;
 
 }

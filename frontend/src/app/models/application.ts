@@ -4,14 +4,14 @@ export interface ApplicationUpload {
     advertisementId: number;
     firstName: string;
     lastName: string;
+    email: string;
+    address: string;
     education: string;
     educationLevel: number;
     cvFile: Blob;
     letterFile: Blob;
     lat: number;
     lng: number;
-    email: string;
-    address: string;
 }
 
 export interface Application {
@@ -19,12 +19,12 @@ export interface Application {
     advertisement: Advertisement;
     firstName: string;
     lastName: string;
+    email: string;
+    address: string;
     education: string;
     educationLevel: number;
     cvLocation: string;
     letterLocation: string;
-    email: string;
-    address: string;
 }
 
 export interface SimpleQuery {
@@ -46,13 +46,15 @@ export interface ApplicationGeoSearch {
 }
 
 export interface ApplicationSearchResult {
+    adTitle: string;
     firstName: string;
     lastName: string;
+    email: string;
+    address: string;
     education: string;
     educationLevel: number;
     cvText: string;
     letterText: string;
     cvLocation: string;
     letterLocation: string;
-    adTitle: string;
 }

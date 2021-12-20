@@ -1,10 +1,4 @@
-18-12-2021 21:49:58.687 [http-nio-8080-exec-2] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 21:50:15.026 [http-nio-8080-exec-5] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 21:53:23.359 [http-nio-8080-exec-8] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 21:53:43.764 [http-nio-8080-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 21:57:39.040 [http-nio-8080-exec-3] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 21:58:15.997 [http-nio-8080-exec-6] INFO  logger.storeApplicationSubmitLog - Application subbmited
-18-12-2021 22:04:18.472 [http-nio-8080-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 22:04:52.901 [http-nio-8080-exec-4] INFO  logger.storeApplicationSubmitLog - Application subbmited
-18-12-2021 22:07:59.734 [http-nio-8080-exec-9] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
-18-12-2021 22:08:31.018 [http-nio-8080-exec-2] INFO  logger.storeApplicationSubmitLog - Application subbmited
+20-12-2021 02:04:34.505 [http-nio-8080-exec-6] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+20-12-2021 02:05:00.121 [http-nio-8080-exec-9] INFO  logger.storeApplicationSubmitLog - Application subbmited
+20-12-2021 02:07:56.583 [http-nio-8080-exec-9] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+20-12-2021 02:08:16.682 [http-nio-8080-exec-2] INFO  logger.storeApplicationSubmitLog - Application subbmited

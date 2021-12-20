@@ -35,6 +35,12 @@ public class Application {
 	private String lastName;
 
 	@NotBlank
+	private String email;
+
+	@NotBlank
+	private String address;
+
+	@NotBlank
 	private String education;
 
 	@NotNull
@@ -45,11 +51,5 @@ public class Application {
 
 	@NotBlank
 	private String letterLocation;
-
-	@NotBlank
-	private String email;
-
-	@NotBlank
-	private String address;
 
 }

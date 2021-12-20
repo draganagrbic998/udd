@@ -32,17 +32,17 @@ public class User implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "role_id")
-	@NotNull
-	private Role role;
-
 	@Column(unique = true)
 	@NotBlank
 	private String email;
 
 	@NotBlank
 	private String password;
+
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	@NotNull
+	private Role role;
 
 	@NotBlank
 	private String city;

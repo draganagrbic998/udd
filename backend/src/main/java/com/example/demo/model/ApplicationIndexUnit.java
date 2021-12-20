@@ -40,14 +40,20 @@ public class ApplicationIndexUnit {
 	@GeoPointField
 	private GeoPoint location;
 
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String adTitle;
+
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String email;
+
+	@Field(type = FieldType.Text, index = false, store = true)
+	private String address;
+
 	@Id
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String cvLocation;
 
 	@Field(type = FieldType.Text, index = false, store = true)
 	private String letterLocation;
-
-	@Field(type = FieldType.Text, index = false, store = true)
-	private String adTitle;
 
 }

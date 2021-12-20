@@ -21,21 +21,23 @@ public class ApplicationMapper {
 		model.setAdvertisement(repo.findById(upload.getAdvertisementId()).get());
 		model.setFirstName(upload.getFirstName());
 		model.setLastName(upload.getLastName());
-		model.setEducation(upload.getEducation());
-		model.setEducationLevel(upload.getEducationLevel());
 		model.setEmail(upload.getEmail());
 		model.setAddress(upload.getAddress());
+		model.setEducation(upload.getEducation());
+		model.setEducationLevel(upload.getEducationLevel());
 		return model;
 	}
 
 	public ApplicationIndexUnit mapToIndexUnit(ApplicationUpload upload) {
 		ApplicationIndexUnit indexUnit = new ApplicationIndexUnit();
+		indexUnit.setAdTitle(repo.findById(upload.getAdvertisementId()).get().getTitle());
 		indexUnit.setFirstName(upload.getFirstName());
 		indexUnit.setLastName(upload.getLastName());
+		indexUnit.setEmail(upload.getEmail());
+		indexUnit.setAddress(upload.getAddress());
 		indexUnit.setEducation(upload.getEducation());
 		indexUnit.setEducationLevel(upload.getEducationLevel());
 		indexUnit.setLocation(new GeoPoint(upload.getLat(), upload.getLng()));
-		indexUnit.setAdTitle(repo.findById(upload.getAdvertisementId()).get().getTitle());
 		return indexUnit;
 	}
 
