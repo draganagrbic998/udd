@@ -25,6 +25,8 @@ public class ApplicationMapper {
 		model.setAddress(upload.getAddress());
 		model.setEducation(upload.getEducation());
 		model.setEducationLevel(upload.getEducationLevel());
+		model.setLat(upload.getLat());
+		model.setLng(upload.getLng());
 		return model;
 	}
 

@@ -52,4 +52,10 @@ public class Application {
 	@NotBlank
 	private String letterLocation;
 
+	@NotNull
+	private Double lat;
+
+	@NotNull
+	private Double lng;
+
 }

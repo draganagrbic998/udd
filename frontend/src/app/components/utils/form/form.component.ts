@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
 import { FormConfig, FormStyle } from 'src/app/utils/form';
-import places, { PlacesInstance } from 'places.js';
+import places from 'places.js';
 import { ALGOLIA_API_ID, ALGOLIA_API_KEY } from 'src/app/utils/algolia';
 
 @Component({
@@ -23,8 +23,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   @Output() submit = new EventEmitter();
   form: FormGroup;
 
-  @ViewChild('locationInput') locationInput: ElementRef<HTMLInputElement>;
-  locationAutocomplete: PlacesInstance;
+  @ViewChildren('locationInput') locationInputs: QueryList<ElementRef<HTMLInputElement>>;
   location: { lat: number, lng: number };
 
   get controls() {
@@ -40,14 +39,17 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.locationInput) {
-      this.locationAutocomplete = places({
-        container: this.locationInput.nativeElement,
+    for (const locationInput of this.locationInputs){
+      const locationAutocomplete = places({
+        container: locationInput.nativeElement,
         apiKey: ALGOLIA_API_KEY,
         appId: ALGOLIA_API_ID
       });
 
-      this.locationAutocomplete.on('change', event => this.location = event.suggestion.latlng);
+      locationAutocomplete.on('change', event => {
+        this.location = event.suggestion.latlng;
+        this.form.get('address').setValue(event.suggestion.value);
+      });
     }
   }
 

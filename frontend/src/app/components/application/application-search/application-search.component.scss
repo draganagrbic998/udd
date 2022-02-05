@@ -1,5 +1,14 @@
 @import "../../../../styles/theme";
 
+.kibana-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2em;
+  padding-right: 2em;
+}
+
 .root {
   display: flex;
   flex-direction: row;
