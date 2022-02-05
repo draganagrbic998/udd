@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SimpleQuery } from 'src/app/models/application';
+import { SimpleQuery } from 'src/app/models/application-search';
 
 @Component({
   selector: 'app-query-search',

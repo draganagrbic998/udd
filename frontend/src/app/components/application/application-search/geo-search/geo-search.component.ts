@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ApplicationGeoSearch } from 'src/app/models/application';
+import { ApplicationGeoSearch } from 'src/app/models/application-search';
 import { FormConfig, FormStyle } from 'src/app/utils/form';
 
 @Component({
@@ -26,7 +26,7 @@ export class GeoSearchComponent {
     }
   }
   style: FormStyle = {
-    "margin-top": '50px'
+    'margin-top': '50px'
   }
 
 }

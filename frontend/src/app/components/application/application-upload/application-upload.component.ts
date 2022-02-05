@@ -54,7 +54,7 @@ export class ApplicationUploadComponent implements OnInit {
   }
   style: FormStyle = {
     width: '550px',
-    'margin-top': '100px'
+    'margin-top': '50px'
   }
 
   ngOnInit() {

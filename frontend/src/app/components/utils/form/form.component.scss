@@ -2,40 +2,40 @@
 
 .root {
   margin: 0 auto;
-}
 
-.mat-card {
-  padding: 30px;
-}
+  .mat-card {
+    padding: 2em;
 
-h1 {
-  text-align: center;
-}
+    h1 {
+      text-align: center;
+    }
 
-form {
-  margin-top: 50px;
-}
+    form {
+      margin-top: 3em;
 
-.file-input {
-  margin-top: 20px;
-}
+      input[type="file"] {
+        display: none;
+      }
 
-.file-status {
-  margin-left: 20px;
-}
+      .file-input {
+        margin-top: 1.5em;
 
-.warning {
-  color: $warn;
-}
+        .file-status {
+          margin-left: 1.5em;
+        }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-}
+        .warning {
+          color: $warn;
+        }
+      }
+    }
 
-input[type="file"] {
-  display: none;
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 3em;
+    }
+  }
 }

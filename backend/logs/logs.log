@@ -15,3 +15,18 @@
 05-02-2022 23:26:58.941 [http-nio-8080-exec-10] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
 05-02-2022 23:27:01.347 [http-nio-8080-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
 05-02-2022 23:27:32.225 [http-nio-8080-exec-3] INFO  logger.storeApplicationSubmitLog - Application subbmited
+06-02-2022 00:12:18.627 [http-nio-8081-exec-2] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:12:54.396 [http-nio-8081-exec-5] INFO  logger.storeApplicationSubmitLog - Application subbmited
+06-02-2022 00:29:02.382 [http-nio-8081-exec-4] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:29:35.688 [http-nio-8081-exec-9] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:30:22.937 [http-nio-8081-exec-6] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:30:50.246 [http-nio-8081-exec-9] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:31:02.180 [http-nio-8081-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:31:12.997 [http-nio-8081-exec-8] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:51:16.436 [http-nio-8081-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:51:32.246 [http-nio-8081-exec-4] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:51:55.721 [http-nio-8081-exec-7] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:52:07.413 [http-nio-8081-exec-10] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:52:20.212 [http-nio-8081-exec-3] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:52:33.253 [http-nio-8081-exec-6] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+06-02-2022 00:52:45.380 [http-nio-8081-exec-9] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549

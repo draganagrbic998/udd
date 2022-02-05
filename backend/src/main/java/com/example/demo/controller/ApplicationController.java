@@ -28,35 +28,32 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/applications")
+@PreAuthorize("hasAuthority('hr')")
 public class ApplicationController {
 
 	private final ApplicationService service;
 
 	@PostMapping
-	@PreAuthorize("hasAuthority('kandidat')")
+	@PreAuthorize("hasAuthority('candidate')")
 	public ResponseEntity<Application> upload(@ModelAttribute ApplicationUpload upload) {
 		try {
 			return ResponseEntity.ok(service.upload(upload));
 		} catch (Exception e) {
-			e.printStackTrace();
 			return ResponseEntity.badRequest().build();
 		}
 	}
 
 	@PostMapping("/search")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch search) {
 		return ResponseEntity.ok(service.search(SearchQueryBuilder.search(search)));
 	}
 
 	@PostMapping("/geo_search")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationGeoSearch search) {
 		return ResponseEntity.ok(service.search(SearchQueryBuilder.geoSearch(search)));
 	}
 
 	@GetMapping("/cv/{fileName}")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<FileSystemResource> downloadCv(@PathVariable String fileName) {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
@@ -64,7 +61,6 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/letter/{fileName}")
-	@PreAuthorize("hasAnyAuthority('tehnicko lice','hr lice', 'zaposleni u sluzbi nabavke', 'dobavljac')")
 	public ResponseEntity<FileSystemResource> downloadLetter(@PathVariable String fileName) {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/pdf")
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
@@ -72,7 +68,7 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/form_access")
-	@PreAuthorize("hasAuthority('kandidat')")
+	@PreAuthorize("hasAuthority('candidate')")
 	public ResponseEntity<Void> formAccess() {
 		service.announceFormAccess();
 		return ResponseEntity.noContent().build();

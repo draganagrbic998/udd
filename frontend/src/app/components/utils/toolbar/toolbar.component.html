@@ -1,5 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z24">
-  <span></span>
+  <span>
+    <button *ngIf="search" mat-stroked-button (click)="goToKibana()">
+      Go to Kibana
+    </button>
+  </span>
   <span>
     <button *ngIf="!login" mat-icon-button [matMenuTriggerFor]="more">
       <mat-icon>more_vert</mat-icon>
@@ -12,3 +16,5 @@
     </mat-menu>
   </span>
 </mat-toolbar>
+
+<div class="block"></div>

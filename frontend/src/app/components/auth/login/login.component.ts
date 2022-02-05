@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.pending = false;
       this.storageService.setAuth(res);
 
-      if (res.role === RoleAuth.KANDIDAT) {
+      if (res.role === RoleAuth.CANDIDATE) {
         this.router.navigate([Route.ADVERTISEMENTS])
       } else {
         this.router.navigate([Route.APPLICATION_SEARCH])

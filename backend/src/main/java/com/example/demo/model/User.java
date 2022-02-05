@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -39,10 +37,8 @@ public class User implements UserDetails {
 	@NotBlank
 	private String password;
 
-	@ManyToOne
-	@JoinColumn(name = "role_id")
-	@NotNull
-	private Role role;
+	@NotBlank
+	private String role;
 
 	@NotBlank
 	private String city;
@@ -55,7 +51,7 @@ public class User implements UserDetails {
 
 	@Override
 	public Collection<Role> getAuthorities() {
-		return List.of(role);
+		return List.of(new Role(role));
 	}
 
 	@Override

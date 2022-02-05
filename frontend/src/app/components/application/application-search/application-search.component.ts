@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { ApplicationGeoSearch, ApplicationSearchResult, SimpleQuery } from 'src/app/models/application-search';
 import { ApplicationService } from 'src/app/services/application.service';
-import { ApplicationGeoSearch, ApplicationSearchResult, SimpleQuery } from 'src/app/models/application';
 
 @Component({
   selector: 'app-application-search',

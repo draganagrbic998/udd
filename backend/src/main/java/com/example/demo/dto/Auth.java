@@ -18,7 +18,7 @@ public class Auth {
 
 	public Auth(User user, String token) {
 		email = user.getEmail();
-		role = user.getRole().getName();
+		role = user.getRole();
 		this.token = token;
 	}
 

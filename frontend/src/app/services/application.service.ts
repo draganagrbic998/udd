@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Application, ApplicationGeoSearch, ApplicationSearch, ApplicationSearchResult, ApplicationUpload } from '../models/application';
+import { Application, ApplicationUpload } from '../models/application';
+import { ApplicationGeoSearch, ApplicationSearch, ApplicationSearchResult } from '../models/application-search';
 
 @Injectable({
   providedIn: 'root'

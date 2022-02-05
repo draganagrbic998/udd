@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-}
 
-.form {
-  flex: 1;
-}
-
-button {
-  margin-left: 2em;
+  .form {
+    flex: 1;
+  }
+  
+  button {
+    margin-left: 2em;
+  }  
 }

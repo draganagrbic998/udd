@@ -1,12 +1,3 @@
-<div class="kibana-row">
-  <span></span>
-  <a href="http://localhost:5601" target="_blank">
-    <button mat-raised-button color="accent">
-      Go to Kibana
-    </button>
-  </a>
-</div>
-
 <div class="root">
   <div class="search-forms">
     <mat-card class="mat-elevation-z24">
@@ -43,28 +34,28 @@
             <span>{{ result.adTitle }}</span>
           </div>
           <div class="description">
-            <div class="details-row">
+            <div class="details">
               First name: <span [innerHtml]="result.firstName"></span>
             </div>
-            <div class="details-row">
+            <div class="details">
               Last name: <span [innerHtml]="result.lastName"></span>
             </div>
-            <div class="details-row">
+            <div class="details">
               Email: <span [innerHtml]="result.email"></span>
             </div>
-            <div class="details-row">
+            <div class="details">
               Address: <span [innerHtml]="result.address"></span>
             </div>
-            <div class="details-row">
+            <div class="details">
               Education: <span [innerHtml]="result.education"></span>
             </div>
-            <div class="details-row">
+            <div class="details">
               Education level: <span>{{ result.educationLevel }}</span>
             </div>
-            <div class="details-row" *ngIf="result.cvText?.length">
+            <div class="details" *ngIf="result.cvText?.length">
               CV text: <span [innerHtml]="result.cvText"></span>
             </div>
-            <div class="details-row" *ngIf="result.letterText?.length">
+            <div class="details" *ngIf="result.letterText?.length">
               Letter text: <span [innerHtml]="result.letterText"></span>
             </div>
             <div class="download">

@@ -1,91 +1,83 @@
 @import "../../../../styles/theme";
 
-.kibana-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2em;
-  padding-right: 2em;
-}
-
 .root {
   display: flex;
   flex-direction: row;
 }
 
 .search-forms {
-  width: 40%;
-  margin-top: 50px;
-  margin-left: 50px;
-}
+  position: fixed;
+  left: 2.5em;
+  width: 35%;
 
-.search-forms .mat-card {
-  padding: 20px;
-}
+  h1 {
+    text-align: center;
+  }
 
-h1 {
-  text-align: center;
-}
+  .mat-card {
+    padding: 2em;
 
-.actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
+    }
+  }
 }
 
 .search-results {
+  position: absolute;
+  right: 0;
   width: 60%;
-  margin: 30px;
-}
 
-.search-result {
-  border: 1px solid $gray;
-  border-radius: 5px;
-  margin: 20px;
-}
+  .search-result {
+    border: 1px solid $gray;
+    border-radius: 1em;
+    margin: 20px;
 
-.search-result .mat-card {
-  padding: 15px;
-}
+    .mat-card {
+      padding: 1em;
 
-.title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $gray;
-  opacity: 0.8;
-  padding: 10px;
-}
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $gray;
+        opacity: 0.8;
+        padding: 0.5em;
+      }
 
-.description {
-  padding: 10px;
-}
+      .description {
+        padding: 0.5em;
 
-.details-row {
-  margin-top: 10px;
-}
+        .details {
+          margin-top: 0.5em;
+        }
 
-.download {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
+        .download {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 0.5em;
 
-a {
-  margin-right: 10px;
+          a {
+            margin-right: 0.5em;
+          }
+        }
+      }
+    }
+  }
 }
 
 ::ng-deep em {

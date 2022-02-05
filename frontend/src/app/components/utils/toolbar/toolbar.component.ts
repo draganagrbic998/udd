@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { Route } from 'src/app/utils/route';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,9 +20,17 @@ export class ToolbarComponent {
     return this.router.url.includes(Route.LOGIN);
   }
 
+  get search() {
+    return this.router.url.includes(Route.APPLICATION_SEARCH);
+  }
+
   logout() {
     this.storageService.removeAuth();
     this.router.navigate([Route.LOGIN]);
+  }
+
+  goToKibana() {
+    window.open(environment.kibanaUrl);
   }
 
 }

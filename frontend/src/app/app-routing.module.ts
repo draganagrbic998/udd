@@ -17,19 +17,19 @@ const routes: Routes = [
     path: Route.ADVERTISEMENTS,
     component: AdvertisementsComponent,
     canActivate: [AuthGuard],
-    data: { roles: [RoleAuth.KANDIDAT] }
+    data: { roles: [RoleAuth.CANDIDATE] }
   },
   {
     path: `${Route.APPLICATION_UPLOAD}/:${Route.ADVERTISEMENT_ID}`,
     component: ApplicationUploadComponent,
     canActivate: [AuthGuard],
-    data: { roles: [RoleAuth.KANDIDAT] }
+    data: { roles: [RoleAuth.CANDIDATE] }
   },
   {
     path: Route.APPLICATION_SEARCH,
     component: ApplicationSearchComponent,
     canActivate: [AuthGuard],
-    data: { roles: [RoleAuth.TEHNICKO_LICE, RoleAuth.HR_LICE, RoleAuth.ZAPOSLENI_U_SLUZBI_NABAVKE, RoleAuth.DOBAVLJAC] }
+    data: { roles: [RoleAuth.HR] }
   },
   {
     path: '**',
