@@ -2,7 +2,7 @@
   <div class="search-forms">
     <mat-card class="mat-elevation-z24">
       <mat-card-content>
-        <h1>Common Search</h1>
+        <h1>Standard Search</h1>
         <app-query-search *ngFor="let query of queries; let i = index" [query]="query" [first]="i === 0"
           (removeQuery)="removeQuery(i)"></app-query-search>
         <div class="actions">
