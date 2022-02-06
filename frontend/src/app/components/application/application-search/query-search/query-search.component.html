@@ -17,10 +17,7 @@
     </mat-form-field>
     <mat-form-field *ngIf="educationLevel">
       <mat-label>Start value</mat-label>
-      <mat-select
-        [(ngModel)]="query.startValue"
-        placeholder="Select start value"
-      >
+      <mat-select [(ngModel)]="query.startValue" placeholder="Select start value">
         <mat-option [value]="1">1</mat-option>
         <mat-option [value]="2">2</mat-option>
         <mat-option [value]="3">3</mat-option>
@@ -43,12 +40,7 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button
-    *ngIf="!first"
-    mat-icon-button
-    color="warn"
-    (click)="removeQuery.emit()"
-  >
+  <button *ngIf="!first" mat-icon-button color="warn" (click)="removeQuery.emit()">
     <mat-icon>delete</mat-icon>
   </button>
 </div>

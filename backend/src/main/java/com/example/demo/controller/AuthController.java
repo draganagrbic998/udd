@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,7 @@ public class AuthController {
 	private final UserService service;
 
 	@PostMapping
-	public ResponseEntity<Auth> login(@RequestBody Auth auth) {
+	public ResponseEntity<Auth> login(@RequestBody @Valid Auth auth) {
 		return ResponseEntity.ok(service.login(auth));
 	}
 

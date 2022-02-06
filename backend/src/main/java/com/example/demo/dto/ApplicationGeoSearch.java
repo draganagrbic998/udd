@@ -1,5 +1,8 @@
 package com.example.demo.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,9 +12,16 @@ import lombok.Setter;
 @Setter
 public class ApplicationGeoSearch {
 
-	private double lat;
-	private double lng;
-	private double distance;
+	@NotNull(message = "Lat cannot be null")
+	private Double lat;
+
+	@NotNull(message = "Lng cannot be null")
+	private Double lng;
+
+	@NotNull(message = "Distance cannot be null")
+	private Double distance;
+
+	@NotBlank(message = "Unit cannot be blank")
 	private String unit;
 
 }

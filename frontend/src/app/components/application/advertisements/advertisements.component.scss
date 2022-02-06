@@ -8,10 +8,10 @@
     border: 1px solid $gray;
     border-radius: 0.5em;
     margin: 1.5em;
-  
+
     .mat-card {
       padding: 1em;
-    
+
       .title {
         display: flex;
         flex-direction: row;
@@ -21,19 +21,19 @@
         opacity: 0.8;
         padding: 0.5em;
       }
-      
+
       .description {
         padding: 0.5em;
         padding-top: 1.5em;
-      
+
         .details {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
           margin-top: 1.5em;
-        }  
-      }  
-    }  
-  }  
+        }
+      }
+    }
+  }
 }

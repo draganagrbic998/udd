@@ -21,10 +21,10 @@ public class ApplicationSearchResult {
 	private String address;
 	private String education;
 	private Integer educationLevel;
-	private String cvText;
-	private String letterText;
 	private String cvLocation;
 	private String letterLocation;
+	private String cvText;
+	private String letterText;
 
 	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
 		adTitle = indexUnit.getAdTitle();

@@ -8,10 +8,10 @@ export interface ApplicationUpload {
     address: string;
     education: string;
     educationLevel: number;
-    cvFile: Blob;
-    letterFile: Blob;
     lat: number;
     lng: number;
+    cvFile: Blob;
+    letterFile: Blob;
 }
 
 export interface Application {

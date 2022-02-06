@@ -39,7 +39,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    for (const locationInput of this.locationInputs){
+    for (const locationInput of this.locationInputs) {
       const locationAutocomplete = places({
         container: locationInput.nativeElement,
         apiKey: ALGOLIA_API_KEY,

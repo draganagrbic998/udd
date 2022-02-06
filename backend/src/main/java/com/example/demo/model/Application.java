@@ -46,16 +46,16 @@ public class Application {
 	@NotNull
 	private Integer educationLevel;
 
-	@NotBlank
-	private String cvLocation;
-
-	@NotBlank
-	private String letterLocation;
-
 	@NotNull
 	private Double lat;
 
 	@NotNull
 	private Double lng;
+
+	@NotBlank
+	private String cvLocation;
+
+	@NotBlank
+	private String letterLocation;
 
 }

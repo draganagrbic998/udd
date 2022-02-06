@@ -1,7 +1,7 @@
 package com.example.demo.mapper;
 
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ApplicationUpload;
 import com.example.demo.model.Application;
@@ -11,7 +11,7 @@ import com.example.demo.repository.AdvertisementRepository;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@Component
+@Service
 public class ApplicationMapper {
 
 	private final AdvertisementRepository repo;

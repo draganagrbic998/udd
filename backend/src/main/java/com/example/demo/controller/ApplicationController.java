@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ public class ApplicationController {
 
 	@PostMapping
 	@PreAuthorize("hasAuthority('candidate')")
-	public ResponseEntity<Application> upload(@ModelAttribute ApplicationUpload upload) {
+	public ResponseEntity<Application> upload(@ModelAttribute @Valid ApplicationUpload upload) {
 		try {
 			return ResponseEntity.ok(service.upload(upload));
 		} catch (Exception e) {
@@ -44,12 +46,12 @@ public class ApplicationController {
 	}
 
 	@PostMapping("/search")
-	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationSearch search) {
+	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody @Valid ApplicationSearch search) {
 		return ResponseEntity.ok(service.search(SearchQueryBuilder.search(search)));
 	}
 
 	@PostMapping("/geo_search")
-	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody ApplicationGeoSearch search) {
+	public ResponseEntity<List<ApplicationSearchResult>> search(@RequestBody @Valid ApplicationGeoSearch search) {
 		return ResponseEntity.ok(service.search(SearchQueryBuilder.geoSearch(search)));
 	}
 

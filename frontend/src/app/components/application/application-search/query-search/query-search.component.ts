@@ -6,7 +6,7 @@ import { SimpleQuery } from 'src/app/models/application-search';
   templateUrl: './query-search.component.html',
   styleUrls: ['./query-search.component.scss']
 })
-export class QuerySearchComponent  {
+export class QuerySearchComponent {
 
   @Input() query: SimpleQuery;
   @Input() first: boolean;

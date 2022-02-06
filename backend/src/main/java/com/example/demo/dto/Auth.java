@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import com.example.demo.model.User;
 
 import lombok.Getter;
@@ -11,8 +13,12 @@ import lombok.Setter;
 @Setter
 public class Auth {
 
+	@NotBlank(message = "Email cannot be blank")
 	private String email;
+
+	@NotBlank(message = "Password cannot be blank")
 	private String password;
+
 	private String role;
 	private String token;
 

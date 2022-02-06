@@ -1,8 +1,5 @@
 <div class="root">
-  <div
-    *ngFor="let advertisement of advertisements"
-    class="advertisement mat-elevation-z24"
-  >
+  <div *ngFor="let advertisement of advertisements" class="advertisement mat-elevation-z24">
     <mat-card>
       <mat-card-content>
         <div class="title">
@@ -13,11 +10,7 @@
           {{ advertisement.description }}
           <div class="details">
             <span></span>
-            <button
-              mat-button
-              color="accent"
-              (click)="uploadApplication(advertisement)"
-            >
+            <button mat-button color="accent" (click)="uploadApplication(advertisement)">
               Upload CV
             </button>
           </div>

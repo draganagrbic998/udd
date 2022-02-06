@@ -10,8 +10,8 @@
             <button *ngIf="queries.length < 6" mat-button (click)="addQuery()">Add Query</button>
           </span>
           <mat-button-toggle-group [(ngModel)]="operator">
-            <mat-button-toggle value="and">AND</mat-button-toggle>
-            <mat-button-toggle value="or">&nbsp;OR&nbsp;&nbsp;</mat-button-toggle>
+            <mat-button-toggle value="AND">AND</mat-button-toggle>
+            <mat-button-toggle value="OR">&nbsp;OR&nbsp;&nbsp;</mat-button-toggle>
           </mat-button-toggle-group>
         </div>
         <div class="center">

@@ -18,10 +18,10 @@ export interface ApplicationSearchResult {
     address: string;
     education: string;
     educationLevel: number;
-    cvText: string;
-    letterText: string;
     cvLocation: string;
     letterLocation: string;
+    cvText: string;
+    letterText: string;
 }
 
 export interface SimpleQuery {
