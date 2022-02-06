@@ -1,6 +1,6 @@
 export interface ApplicationSearch {
     queries: SimpleQuery[]
-    operator: 'and' | 'or'
+    operator: 'AND' | 'OR'
 }
 
 export interface ApplicationGeoSearch {

@@ -16,7 +16,7 @@ export class ApplicationSearchComponent {
   searchPending = false;
   geoSearchPending = false;
   queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1 }]
-  operator: 'and' | 'or' = 'and'
+  operator: 'AND' | 'OR' = 'AND'
   searchResults: ApplicationSearchResult[];
 
   addQuery() {
