@@ -65,4 +65,11 @@ export class ApplicationSearchComponent {
     a.remove()
   }
 
+  highlightEducationLevel(result: ApplicationSearchResult) {
+    if (this.queries.some(query => query.field === 'educationLevel' && result.educationLevel >= query.startValue && result.educationLevel <= query.endValue)) {
+      return `<em>${result.educationLevel}</em>`
+    }
+    return result.educationLevel
+  }
+
 }

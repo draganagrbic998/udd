@@ -48,7 +48,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
       locationAutocomplete.on('change', event => {
         this.location = event.suggestion.latlng;
-        this.form.get('address').setValue(event.suggestion.value);
+        if ('address' in this.form.value) {
+          this.form.get('address').setValue(event.suggestion.value);
+        }
       });
     }
   }

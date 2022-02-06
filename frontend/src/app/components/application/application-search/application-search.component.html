@@ -7,12 +7,14 @@
           (removeQuery)="removeQuery(i)"></app-query-search>
         <div class="actions">
           <span>
+            <mat-button-toggle-group *ngIf="queries.length > 1" [(ngModel)]="operator">
+              <mat-button-toggle value="AND">AND</mat-button-toggle>
+              <mat-button-toggle value="OR">&nbsp;OR&nbsp;&nbsp;</mat-button-toggle>
+            </mat-button-toggle-group>
+          </span>
+          <span>
             <button mat-button (click)="addQuery()">Add Query</button>
           </span>
-          <mat-button-toggle-group [(ngModel)]="operator">
-            <mat-button-toggle value="AND">AND</mat-button-toggle>
-            <mat-button-toggle value="OR">&nbsp;OR&nbsp;&nbsp;</mat-button-toggle>
-          </mat-button-toggle-group>
         </div>
         <div class="center">
           <button *ngIf="!searchPending" mat-raised-button color="primary" (click)="search()">
@@ -35,10 +37,10 @@
           </div>
           <div class="description">
             <div class="details">
-              First name: <span>{{result.firstName}}</span>
+              First name: <span [innerHtml]="result.firstName"></span>
             </div>
             <div class="details">
-              Last name: <span>{{result.lastName}}</span>
+              Last name: <span [innerHtml]="result.lastName"></span>
             </div>
             <div class="details">
               Email: <span>{{result.email}}</span>
@@ -47,10 +49,10 @@
               Address: <span>{{result.address}}</span>
             </div>
             <div class="details">
-              Education: <span>{{result.education}}</span>
+              Education: <span [innerHtml]="result.education"></span>
             </div>
             <div class="details">
-              Education level: <span>{{ result.educationLevel }}</span>
+              Education level: <span [innerHtml]="highlightEducationLevel(result)"></span>
             </div>
             <div class="details">
               CV text: <span [innerHtml]="result.cvText"></span>

@@ -28,11 +28,11 @@ public class ApplicationSearchResult {
 
 	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
 		adTitle = indexUnit.getAdTitle();
-		firstName = indexUnit.getFirstName();
-		lastName = indexUnit.getLastName();
+		firstName = highlights.getOrDefault("firstName", List.of(indexUnit.getFirstName())).get(0);
+		lastName = highlights.getOrDefault("lastName", List.of(indexUnit.getLastName())).get(0);
 		email = indexUnit.getEmail();
 		address = indexUnit.getAddress();
-		education = indexUnit.getEducation();
+		education = highlights.getOrDefault("education", List.of(indexUnit.getEducation())).get(0);
 		educationLevel = indexUnit.getEducationLevel();
 		cvLocation = indexUnit.getCvLocation();
 		letterLocation = indexUnit.getLetterLocation();
