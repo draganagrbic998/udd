@@ -31,9 +31,7 @@ public class SearchQueryBuilder {
 		});
 
 		return new NativeSearchQueryBuilder().withQuery(query)
-				.withHighlightFields(new HighlightBuilder.Field("firstName"), new HighlightBuilder.Field("lastName"),
-						new HighlightBuilder.Field("education"), new HighlightBuilder.Field("cvText"),
-						new HighlightBuilder.Field("letterText"))
+				.withHighlightFields(new HighlightBuilder.Field("cvText"), new HighlightBuilder.Field("letterText"))
 				.build();
 	}
 

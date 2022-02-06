@@ -28,17 +28,31 @@ public class ApplicationSearchResult {
 
 	public ApplicationSearchResult(ApplicationIndexUnit indexUnit, Map<String, List<String>> highlights) {
 		adTitle = indexUnit.getAdTitle();
+		firstName = indexUnit.getFirstName();
+		lastName = indexUnit.getLastName();
 		email = indexUnit.getEmail();
 		address = indexUnit.getAddress();
+		education = indexUnit.getEducation();
+		educationLevel = indexUnit.getEducationLevel();
 		cvLocation = indexUnit.getCvLocation();
 		letterLocation = indexUnit.getLetterLocation();
 
-		firstName = highlights.getOrDefault("firstName", List.of(indexUnit.getFirstName())).get(0);
-		lastName = highlights.getOrDefault("lastName", List.of(indexUnit.getLastName())).get(0);
-		education = highlights.getOrDefault("education", List.of(indexUnit.getEducation())).get(0);
-		educationLevel = indexUnit.getEducationLevel();
-		cvText = highlights.getOrDefault("cvText", List.of("")).get(0);
-		letterText = highlights.getOrDefault("letterText", List.of("")).get(0);
+		if (highlights.get("cvText") != null) {
+			StringBuilder cvBuilder = new StringBuilder();
+			highlights.get("cvText").forEach(fragment -> cvBuilder.append(fragment + "..."));
+			cvText = cvBuilder.toString();
+		} else {
+			cvText = indexUnit.getCvText().substring(0, Math.min(indexUnit.getCvText().length(), 300)) + "...";
+		}
+
+		if (highlights.get("letterText") != null) {
+			StringBuilder letterBuilder = new StringBuilder();
+			highlights.get("letterText").forEach(fragment -> letterBuilder.append(fragment + "..."));
+			letterText = letterBuilder.toString();
+		} else {
+			letterText = indexUnit.getLetterText().substring(0, Math.min(indexUnit.getLetterText().length(), 300))
+					+ "...";
+		}
 	}
 
 }

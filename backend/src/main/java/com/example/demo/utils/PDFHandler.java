@@ -14,7 +14,9 @@ public class PDFHandler {
 	public static String parse(String fileName) throws IOException {
 		PDFParser parser = new PDFParser(new RandomAccessFile(new File(FileService.RESOURCES_PATH + fileName), "r"));
 		parser.parse();
-		return new PDFTextStripper().getText(parser.getPDDocument());
+		String result = new PDFTextStripper().getText(parser.getPDDocument());
+		parser.getPDDocument().close();
+		return result;
 	}
 
 }

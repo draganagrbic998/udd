@@ -7,7 +7,7 @@
           (removeQuery)="removeQuery(i)"></app-query-search>
         <div class="actions">
           <span>
-            <button *ngIf="queries.length < 6" mat-button (click)="addQuery()">Add Query</button>
+            <button mat-button (click)="addQuery()">Add Query</button>
           </span>
           <mat-button-toggle-group [(ngModel)]="operator">
             <mat-button-toggle value="AND">AND</mat-button-toggle>
@@ -35,28 +35,28 @@
           </div>
           <div class="description">
             <div class="details">
-              First name: <span [innerHtml]="result.firstName"></span>
+              First name: <span>{{result.firstName}}</span>
             </div>
             <div class="details">
-              Last name: <span [innerHtml]="result.lastName"></span>
+              Last name: <span>{{result.lastName}}</span>
             </div>
             <div class="details">
-              Email: <span [innerHtml]="result.email"></span>
+              Email: <span>{{result.email}}</span>
             </div>
             <div class="details">
-              Address: <span [innerHtml]="result.address"></span>
+              Address: <span>{{result.address}}</span>
             </div>
             <div class="details">
-              Education: <span [innerHtml]="result.education"></span>
+              Education: <span>{{result.education}}</span>
             </div>
             <div class="details">
               Education level: <span>{{ result.educationLevel }}</span>
             </div>
-            <div class="details" *ngIf="result.cvText?.length">
-              CV text: <span innerHtml="...{{result.cvText}}..."></span>
+            <div class="details">
+              CV text: <span [innerHtml]="result.cvText"></span>
             </div>
-            <div class="details" *ngIf="result.letterText?.length">
-              Letter text: <span innerHtml="...{{result.letterText}}..."></span>
+            <div class="details">
+              Letter text: <span [innerHtml]="result.letterText"></span>
             </div>
             <div class="download">
               <span></span>
