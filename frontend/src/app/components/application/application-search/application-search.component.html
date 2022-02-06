@@ -53,10 +53,10 @@
               Education level: <span>{{ result.educationLevel }}</span>
             </div>
             <div class="details" *ngIf="result.cvText?.length">
-              CV text: <span [innerHtml]="result.cvText"></span>
+              CV text: <span innerHtml="...{{result.cvText}}..."></span>
             </div>
             <div class="details" *ngIf="result.letterText?.length">
-              Letter text: <span [innerHtml]="result.letterText"></span>
+              Letter text: <span innerHtml="...{{result.letterText}}..."></span>
             </div>
             <div class="download">
               <span></span>
