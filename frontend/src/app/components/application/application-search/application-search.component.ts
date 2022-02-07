@@ -44,7 +44,7 @@ export class ApplicationSearchComponent {
     this.geoSearchPending = true;
 
     try {
-      this.searchResults = await this.applicationService.geoSearch(search).toPromise();
+      this.searchResults = (await this.applicationService.geoSearch(search).toPromise()).map(result => ({ ...result, address: `<em>${result.address}</em>` }));
       this.geoSearchPending = false;
     } catch {
       this.geoSearchPending = false;
