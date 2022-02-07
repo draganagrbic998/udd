@@ -5,6 +5,9 @@
         "type": "serbian"
       }
     }
+  },
+  "highlight": {
+  	"max_analyzed_offset": 10000000
   }
 }
 

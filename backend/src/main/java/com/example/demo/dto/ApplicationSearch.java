@@ -13,14 +13,7 @@ import lombok.Setter;
 @Setter
 public class ApplicationSearch {
 
-	public enum Operator {
-		AND, OR
-	}
-
 	@NotNull(message = "Queries cannot be null")
 	private List<SimpleQuery> queries;
-
-	@NotNull(message = "Operator cannot be null")
-	private Operator operator;
 
 }

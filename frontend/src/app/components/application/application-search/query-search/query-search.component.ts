@@ -10,7 +10,6 @@ export class QuerySearchComponent {
 
   @Input() query: SimpleQuery;
   @Input() first: boolean;
-  @Input() canNot: boolean;
   @Output() removeQuery = new EventEmitter<void>();
 
   get educationLevel() {

@@ -2,16 +2,11 @@
   <div class="search-forms">
     <mat-card class="mat-elevation-z24">
       <mat-card-content>
-        <h1>Standard Search</h1>
+        <h1>Boolean Search</h1>
         <app-query-search *ngFor="let query of queries; let i = index" [query]="query" [first]="i === 0"
-          [canNot]="queries.length === 1 || operator !== 'OR'" (removeQuery)="removeQuery(i)"></app-query-search>
+          (removeQuery)="removeQuery(i)"></app-query-search>
         <div class="actions">
-          <span>
-            <mat-button-toggle-group *ngIf="queries.length > 1" [(ngModel)]="operator">
-              <mat-button-toggle value="AND">AND</mat-button-toggle>
-              <mat-button-toggle value="OR">&nbsp;OR&nbsp;&nbsp;</mat-button-toggle>
-            </mat-button-toggle-group>
-          </span>
+          <span></span>
           <span>
             <button mat-button (click)="addQuery()">Add Query</button>
           </span>
@@ -52,7 +47,7 @@
               Education: <span [innerHtml]="result.education"></span>
             </div>
             <div class="details">
-              Education level: <span [innerHtml]="highlightEducationLevel(result)"></span>
+              Education level: <span [innerHtml]="result.educationLevel"></span>
             </div>
             <div class="details">
               CV text: <span [innerHtml]="result.cvText"></span>

@@ -15,12 +15,11 @@ export class ApplicationSearchComponent {
 
   searchPending = false;
   geoSearchPending = false;
-  queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1, not: false }]
-  operator: 'AND' | 'OR' = 'AND'
+  queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1, operator: 'AND', not: false }]
   searchResults: ApplicationSearchResult[];
 
   addQuery() {
-    this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1, not: false })
+    this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1, operator: 'AND', not: false })
   }
 
   removeQuery(index: number) {
@@ -33,7 +32,7 @@ export class ApplicationSearchComponent {
     }
     this.searchPending = true;
     try {
-      this.searchResults = await this.applicationService.search({ queries: this.queries, operator: this.operator }).toPromise();
+      this.searchResults = await this.applicationService.search({ queries: this.queries }).toPromise();
       this.searchPending = false;
     } catch {
       this.searchPending = false;
@@ -63,13 +62,6 @@ export class ApplicationSearchComponent {
     a.click()
     window.URL.revokeObjectURL(url)
     a.remove()
-  }
-
-  highlightEducationLevel(result: ApplicationSearchResult) {
-    if (this.queries.some(query => query.field === 'educationLevel' && result.educationLevel >= query.startValue && result.educationLevel <= query.endValue)) {
-      return `<em>${result.educationLevel}</em>`
-    }
-    return result.educationLevel
   }
 
 }
