@@ -4,7 +4,7 @@
       <mat-card-content>
         <h1>Standard Search</h1>
         <app-query-search *ngFor="let query of queries; let i = index" [query]="query" [first]="i === 0"
-          (removeQuery)="removeQuery(i)"></app-query-search>
+          [canNot]="queries.length === 1 || operator !== 'OR'" (removeQuery)="removeQuery(i)"></app-query-search>
         <div class="actions">
           <span>
             <mat-button-toggle-group *ngIf="queries.length > 1" [(ngModel)]="operator">

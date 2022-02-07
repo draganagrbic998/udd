@@ -1,4 +1,4 @@
-<div class="root" [class.disabled]="pending">
+<div class="root">
   <div class="form">
     <mat-form-field>
       <mat-label>Field</mat-label>
@@ -40,7 +40,11 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <button *ngIf="!first" mat-icon-button color="warn" (click)="removeQuery.emit()">
-    <mat-icon>delete</mat-icon>
-  </button>
+  <span class="actions-row">
+    <div *ngIf="canNot">NOT</div>
+    <mat-slide-toggle *ngIf="canNot" [(ngModel)]="query.not"></mat-slide-toggle>
+    <button *ngIf="!first" mat-icon-button color="warn" (click)="removeQuery.emit()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
 </div>

@@ -29,4 +29,5 @@ export interface SimpleQuery {
     value: string
     startValue: number
     endValue: number
+    not: boolean
 }

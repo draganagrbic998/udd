@@ -15,12 +15,12 @@ export class ApplicationSearchComponent {
 
   searchPending = false;
   geoSearchPending = false;
-  queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1 }]
+  queries: SimpleQuery[] = [{ field: 'firstName', value: '', startValue: 1, endValue: 1, not: false }]
   operator: 'AND' | 'OR' = 'AND'
   searchResults: ApplicationSearchResult[];
 
   addQuery() {
-    this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1 })
+    this.queries.push({ field: 'firstName', value: '', startValue: 1, endValue: 1, not: false })
   }
 
   removeQuery(index: number) {

@@ -23,8 +23,12 @@ public class SearchQueryBuilder {
 							? QueryBuilders.matchPhraseQuery(sq.getField(), sq.getValue())
 							: QueryBuilders.matchQuery(sq.getField(), sq.getValue())
 					: QueryBuilders.rangeQuery(sq.getField()).from(sq.getStartValue()).to(sq.getEndValue());
-			if (search.getOperator().equals(ApplicationSearch.Operator.AND)) {
-				query.must(simpleQuery);
+			if (search.getOperator().equals(ApplicationSearch.Operator.AND) || search.getQueries().size() == 1) {
+				if (sq.getNot()) {
+					query.mustNot(simpleQuery);
+				} else {
+					query.must(simpleQuery);
+				}
 			} else {
 				query.should(simpleQuery);
 			}
