@@ -29,6 +29,10 @@ export class ToolbarComponent {
     this.router.navigate([Route.LOGIN]);
   }
 
+  goToApplicationList(){
+    this.router.navigate([Route.APPLICATION_LIST]);
+  }
+
   goToKibana() {
     window.open(environment.kibanaUrl);
   }

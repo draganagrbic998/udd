@@ -41,6 +41,7 @@ public class ApplicationSearchResult {
 			StringBuilder cvBuilder = new StringBuilder();
 			highlights.get("cvText").forEach(fragment -> cvBuilder.append(fragment + "..."));
 			cvText = cvBuilder.toString();
+			cvText = cvText.substring(0, Math.min(cvText.length(), 1000));
 		} else {
 			cvText = indexUnit.getCvText().substring(0, Math.min(indexUnit.getCvText().length(), 300)) + "...";
 		}
@@ -49,6 +50,7 @@ public class ApplicationSearchResult {
 			StringBuilder letterBuilder = new StringBuilder();
 			highlights.get("letterText").forEach(fragment -> letterBuilder.append(fragment + "..."));
 			letterText = letterBuilder.toString();
+			letterText = letterText.substring(0, Math.min(letterText.length(), 1000));
 		} else {
 			letterText = indexUnit.getLetterText().substring(0, Math.min(indexUnit.getLetterText().length(), 300))
 					+ "...";

@@ -35,6 +35,11 @@ public class ApplicationController {
 
 	private final ApplicationService service;
 
+	@GetMapping
+	public ResponseEntity<List<Application>> read() {
+		return ResponseEntity.ok(service.read());
+	}
+
 	@PostMapping
 	@PreAuthorize("hasAuthority('candidate')")
 	public ResponseEntity<Application> upload(@ModelAttribute @Valid ApplicationUpload upload) {

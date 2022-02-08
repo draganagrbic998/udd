@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z24">
   <span>
-    <button *ngIf="search" mat-stroked-button (click)="goToKibana()">
+    <button *ngIf="search" mat-stroked-button (click)="goToApplicationList()">
+      Application List
+    </button>
+    <button *ngIf="search" mat-stroked-button (click)="goToKibana()" style="margin-left: 2em;">
       Go to Kibana
     </button>
   </span>

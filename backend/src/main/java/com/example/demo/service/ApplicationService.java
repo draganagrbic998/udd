@@ -32,6 +32,10 @@ public class ApplicationService {
 	private final UserService userService;
 	private final ElasticsearchRestTemplate template;
 
+	public List<Application> read() {
+		return repo.findAll();
+	}
+
 	public Application upload(ApplicationUpload upload) throws IOException {
 		logger.storeApplicationSubmitLog();
 

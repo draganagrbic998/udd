@@ -15,6 +15,10 @@ export class ApplicationService {
 
   private readonly API = `${environment.apiUrl}/applications`;
 
+  read() {
+    return this.http.get<Application[]>(this.API);
+  }
+
   upload(upload: ApplicationUpload) {
     const data = new FormData();
     for (const field in upload) {

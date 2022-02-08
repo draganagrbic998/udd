@@ -31,7 +31,7 @@ public class CustomLogger {
 		} else {
 			period = "evening";
 		}
-		LOGGER.info("submission: " + period);
+		LOGGER.info("submission: " + period + ", " + hours);
 	}
 
 }
