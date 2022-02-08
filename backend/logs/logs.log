@@ -23,3 +23,11 @@
 07-02-2022 23:20:32.072 [http-nio-8081-exec-3] INFO  logger.storeApplicationSubmitLog - submission: evening
 07-02-2022 23:23:08.030 [http-nio-8081-exec-10] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
 07-02-2022 23:23:24.836 [http-nio-8081-exec-3] INFO  logger.storeApplicationSubmitLog - submission: evening
+08-02-2022 00:35:19.062 [http-nio-8081-exec-7] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+08-02-2022 00:35:38.915 [http-nio-8081-exec-10] INFO  logger.storeApplicationSubmitLog - submission: night
+08-02-2022 01:00:07.211 [http-nio-8081-exec-6] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+08-02-2022 01:00:22.446 [http-nio-8081-exec-9] INFO  logger.storeApplicationSubmitLog - submission: night
+08-02-2022 01:05:12.627 [http-nio-8081-exec-7] INFO  logger.storeApplicationFormAccessLog - city: Paris, lat: 48.864716, lng: 2.349014
+08-02-2022 01:05:35.768 [http-nio-8081-exec-10] INFO  logger.storeApplicationSubmitLog - submission: night
+08-02-2022 01:48:31.549 [http-nio-8081-exec-1] INFO  logger.storeApplicationFormAccessLog - city: Novi Sad, lat: 45.267136, lng: 19.833549
+08-02-2022 01:48:50.003 [http-nio-8081-exec-4] INFO  logger.storeApplicationSubmitLog - submission: night
